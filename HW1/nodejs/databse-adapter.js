@@ -21,16 +21,16 @@ module.exports.PostgresRequester = function(user, database, password, host='loca
     }
 }
 
-module.exports.MongoRequester = function(host) {
-    return async (func)=>{
-        const port = 27017
-        const uri = `${host}:${port}/SampleDB?retryWrites=true&writeConcern=majority`;
-        const client = new MongoClient(uri);
-        try {
-            await client.connect();
-            return await func(client)
-        } finally {
-            await client.close();
-        }
-    }
-}
+// module.exports.MongoRequester = function(host) {
+//     return async (func)=>{
+//         const port = 27017
+//         const uri = `${host}:${port}/SampleDB?retryWrites=true&writeConcern=majority`;
+//         const client = new MongoClient(uri);
+//         try {
+//             await client.connect();
+//             return await func(client)
+//         } finally {
+//             await client.close();
+//         }
+//     }
+// }
