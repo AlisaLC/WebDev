@@ -6,6 +6,14 @@ services:
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf:ro
   web-dev-postgres:
-    image: postgres:11.5
+    build: 
+      context: ./db
+      dockerfile: DockerFile
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=thankyoushayan
+      - POSTGRES_DB=webdev
   web-dev-redis:
     image: redis:6.0.8
