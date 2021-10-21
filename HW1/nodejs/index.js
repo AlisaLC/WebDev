@@ -17,6 +17,10 @@ const port = 3000
 
 app.post('/sha256', async (req, res) => {
     const text = req.body.text
+    if(text.length < 8) {
+        res.sendStatus(400).send({error: "text has less than 8 chars"})
+        return
+    }
     const hash = crypto.createHash('sha256')
                    .update(text)
                    .digest('hex');

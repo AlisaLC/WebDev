@@ -53,6 +53,12 @@ func textToHash(c *gin.Context) {
 	var textStruct TextStruct
 	c.BindJSON(&textStruct)
 	text := textStruct.Text
+	if len(text) < 8 {
+		c.JSON(400, gin.H{
+			"error": "text has less than 8 chars",
+		})
+		return
+	}
 	hasher := sha256.New()
 	hasher.Write([]byte(text))
 	shaHash := hex.EncodeToString(hasher.Sum(nil))
