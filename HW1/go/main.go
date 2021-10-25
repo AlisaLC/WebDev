@@ -1,10 +1,12 @@
 package main
 
 import (
+	"context"
 	"crypto/sha256"
 	"encoding/hex"
-
+	"fmt"
 	"github.com/gin-gonic/gin"
+	"github.com/go-redis/redis/v8"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
 )
@@ -20,8 +22,15 @@ type TextStruct struct {
 
 var db *gorm.DB
 var err error
+var ctx = context.Background()
+var rdb *redis.Client
 
 func main() {
+	rdb = redis.NewClient(&redis.Options{
+		Addr:     "localhost:6379",
+		Password: "",
+		DB:       0,
+	})
 	db, err = gorm.Open("postgres", "host=localhost port=5432 user=postgres dbname=webdev sslmode=disable password=thankyoushayan")
 	if err != nil {
 		panic("failed to connect database")
@@ -36,6 +45,22 @@ func main() {
 
 func hashToText(c *gin.Context) {
 	hash := c.Query("hash")
+	if len(hash) != 64 {
+		c.JSON(400, gin.H{
+			"error": "hash has incorrect length",
+		})
+		return
+	}
+	text, err := rdb.Get(ctx, hash).Result()
+	if err == nil {
+		fmt.Println("cash ziad eyne hatami")
+		c.JSON(200, gin.H{
+			"text": text,
+		})
+		return
+	} else {
+		fmt.Println(err)
+	}
 	var record HashRecord
 	exists := db.First(&record, "hash = ?", hash)
 	if exists.Error == nil {
@@ -62,16 +87,12 @@ func textToHash(c *gin.Context) {
 	hasher := sha256.New()
 	hasher.Write([]byte(text))
 	shaHash := hex.EncodeToString(hasher.Sum(nil))
-	// if result.Error == nil {
 	c.JSON(200, gin.H{
 		"hash": shaHash,
 	})
-	// } else {
-	// 	c.JSON(503, gin.H{
-	// 		"error": "couldn't save the Hash",
-	// 	})
-	// }
-	record := &HashRecord{Text: text, Hash: shaHash}
-	// result := db.Create(&record)
-	db.Create((&record))
+	if rdb.Get(ctx, shaHash).Err() != nil {
+		rdb.Set(ctx, shaHash, text, 0)
+		record := &HashRecord{Text: text, Hash: shaHash}
+		db.Create((&record))
+	}
 }
