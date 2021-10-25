@@ -2,7 +2,6 @@ const crypto = require('crypto');
 const { PostgresRequester } = require("./databse-adapter.js")
 const postgres = PostgresRequester(user='postgres', database='webdev', password='thankyoushayan')
 const express = require('express')
-const path = require('path')
 const app = express()
 const redis = require("redis")
 const redisClient = redis.createClient({host:"127.0.0.1",port:6379,password : "" , db:0});
@@ -13,7 +12,6 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
-app.use(express.static(path.join(__dirname, "../frontend")))
 
 const port = 3000
 
@@ -45,10 +43,9 @@ app.get('/sha256', async (req, res) => {
     redisClient.get(hash , async(err, cached) => {
         if (err) throw err;
         if (cached) {
-            res.send({text : "data retrieved from the cache: " + cached})
+            res.send({text : cached})
            
-        } else{
-  
+        } else{  
             postgres(async client=>client.query(`
             SELECT text FROM hash_records
             WHERE hash = '${hash}';
