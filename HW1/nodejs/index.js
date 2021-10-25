@@ -4,7 +4,7 @@ const postgres = PostgresRequester(user='postgres', database='webdev', password=
 const express = require('express')
 const app = express()
 const redis = require("redis")
-const redisClient = redis.createClient({host:"127.0.0.1",port:6379,password : "" , db:0});
+const redisClient = redis.createClient({host:"127.0.0.1",port:6379, db:0});
 
 const bodyParser = require('body-parser')
 app.use(bodyParser.json());
@@ -44,19 +44,22 @@ app.get('/sha256', async (req, res) => {
         if (err) throw err;
         if (cached) {
             res.send({text : cached})
-           
+            
         } else{  
             postgres(async client=>client.query(`
             SELECT text FROM hash_records
             WHERE hash = '${hash}';
-        `))
+            `))
             .then(result=> {
-                redisClient.set(hash,result.rows[0].text,async (err, reply) => {
-                    if (err) throw err;
-                    console.log(reply);}
-                    )
-                res.send(result.rows[0]) 
-            
+                if(result.rows.length > 0) {
+                    redisClient.set(hash,result.rows[0].text,async (err, reply) => {
+                        if (err) throw err;
+                        console.log(reply);}
+                        )
+                    res.send(result.rows[0])
+                } else {
+                    res.status(404).send("no text found for this hash")
+                }
             })
             .catch(console.log)
         }
