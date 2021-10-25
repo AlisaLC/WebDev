@@ -18,10 +18,6 @@ class QuickstartUser(HttpUser):
         self.client.get("/go/sha256?hash=be018cef50798b9791bdd64066e9f10388f36d4ab06b1e6891dbfb4e22643fa5")
 
     @task
-    def go_hash_to_text_no_cache(self):
-        self.client.get("/go/sha256?hash=be018cef50798b9791bdd64066e9f10388f36d4ab06b1e6891dbfb4e22643fa4")
-
-    @task
     def go_text_to_hash_cache(self):
         self.client.post("/go/sha256", json={"text": "mamaliscute"})
 
@@ -31,10 +27,6 @@ class QuickstartUser(HttpUser):
     @task
     def node_hash_to_text_cache(self):
         self.client.get("/nodejs/sha256?hash=be018cef50798b9791bdd64066e9f10388f36d4ab06b1e6891dbfb4e22643fa5")
-    
-    @task
-    def node_hash_to_text_no_cache(self):
-        self.client.get("/nodejs/sha256?hash=be018cef50798b9791bdd64066e9f10388f36d4ab06b1e6891dbfb4e22643fa4")
     
     @task
     def node_text_to_hash_cache(self):
