@@ -4,6 +4,8 @@ const postgres = PostgresRequester(user='postgres', database='webdev', password=
 const express = require('express')
 const path = require('path')
 const app = express()
+const redis = require("redis")
+const redisClient = redis.createClient({host:"127.0.0.1",port:6379,password : "" , db:0});
 
 const bodyParser = require('body-parser')
 app.use(bodyParser.json());
@@ -25,6 +27,7 @@ app.post('/sha256', async (req, res) => {
                    .update(text)
                    .digest('hex');
     // todo. only save for the first time
+
     postgres(async client=>client.query(`
         INSERT INTO hash_records(text, hash)
         VALUES ('${text}', '${hash}');
@@ -38,12 +41,30 @@ app.get('/sha256', async (req, res) => {
     if (hash === undefined) {
         hash = req.body.hash
     }
-    postgres(async client=>client.query(`
-        SELECT text FROM hash_records
-        WHERE hash = '${hash}';
-    `))
-        .then(result=>res.send(result.rows[0]))
-        .catch(console.log)
+
+    redisClient.get(hash , async(err, cached) => {
+        if (err) throw err;
+        if (cached) {
+            res.send({text : "data retrieved from the cache: " + cached})
+           
+        } else{
+  
+            postgres(async client=>client.query(`
+            SELECT text FROM hash_records
+            WHERE hash = '${hash}';
+        `))
+            .then(result=> {
+                redisClient.set(hash,result.rows[0].text,async (err, reply) => {
+                    if (err) throw err;
+                    console.log(reply);}
+                    )
+                res.send(result.rows[0]) 
+            
+            })
+            .catch(console.log)
+        }
+    })
+   
 })
 
 app.listen(port, () => {
