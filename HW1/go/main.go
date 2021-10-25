@@ -4,7 +4,6 @@ import (
 	"context"
 	"crypto/sha256"
 	"encoding/hex"
-	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/go-redis/redis/v8"
 	"github.com/jinzhu/gorm"
@@ -53,17 +52,15 @@ func hashToText(c *gin.Context) {
 	}
 	text, err := rdb.Get(ctx, hash).Result()
 	if err == nil {
-		fmt.Println("cash ziad eyne hatami")
 		c.JSON(200, gin.H{
 			"text": text,
 		})
 		return
-	} else {
-		fmt.Println(err)
 	}
 	var record HashRecord
 	exists := db.First(&record, "hash = ?", hash)
 	if exists.Error == nil {
+		rdb.Set(ctx, hash, record.Text, 0)
 		c.JSON(200, gin.H{
 			"text": record.Text,
 		})
@@ -93,6 +90,6 @@ func textToHash(c *gin.Context) {
 	if rdb.Get(ctx, shaHash).Err() != nil {
 		rdb.Set(ctx, shaHash, text, 0)
 		record := &HashRecord{Text: text, Hash: shaHash}
-		db.Create((&record))
+		db.Create(&record)
 	}
 }
