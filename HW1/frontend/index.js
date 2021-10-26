@@ -1,4 +1,11 @@
 prefix = "http://localhost:8080/"
+
+function alerter(alertPlaceholder, message, type) {
+    let wrapper = document.createElement('div');
+    wrapper.innerHTML = '<div class="alert alert-' + type + ' alert-dismissible" role="alert">' + message + '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>'
+    alertPlaceholder.append(wrapper)
+}
+
 function getBackend() {
     const rbs = document.querySelectorAll('input[name="backend"]');
     for (const rb of rbs) {
@@ -7,13 +14,14 @@ function getBackend() {
         }
     }
 }
+
 function getHash() {
-    input_node = document.getElementById("text_input")
-    output_node = document.getElementById("hash_container")
+    let input_node = document.getElementById("text_input")
+    let output_node = document.getElementById("hash_container")
 
     let text = input_node.value
     if (text.length < 8) {
-        alert(text + " is too small (at least 8 needed)")
+        alerter(output_node, text + " is too small (at least 8 needed)", "danger")
         return
     }
     fetch(`${prefix}${getBackend()}/sha256`, {
@@ -25,19 +33,20 @@ function getHash() {
             "Content-type": "application/json; charset=UTF-8"
         }
     })
-        .then(res=>res.json())
-        .then(res=>output_node.innerHTML=res.hash)
+        .then(res => res.json())
+        .then(res => alerter(output_node, res.hash, "success"))
 }
+
 function getText() {
-    input_node = document.getElementById("hash_input")
-    output_node = document.getElementById("text_container")
+    let input_node = document.getElementById("hash_input")
+    let output_node = document.getElementById("text_container")
     let hash = input_node.value
     fetch(`${prefix}${getBackend()}/sha256?hash=${encodeURIComponent(hash, {method: "GET"})}`)
-        .then(res=> {
-            if (res.status != 200)
-                throw "not successfull!"
+        .then(res => {
+            if (res.status !== 200)
+                throw "not successful!"
             return res
         })
-        .then(res=>res.json()).catch(res=>{ return {text: "no match!"}})
-        .then(res=>output_node.innerHTML=res.text)
+        .then(res => res.json()).catch(res => alerter(output_node, "no match!", "danger"))
+        .then(res => alerter(output_node, res.text, "success"))
 }
