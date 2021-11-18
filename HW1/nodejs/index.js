@@ -2,10 +2,9 @@ const crypto = require('crypto');
 const { PostgresRequester } = require("./databse-adapter.js")
 const postgres = PostgresRequester(user='postgres', database='webdev', password='thankyoushayan')
 const express = require('express')
-const path = require('path')
 const app = express()
 const redis = require("redis")
-const redisClient = redis.createClient({host:"127.0.0.1",port:6379,password : "" , db:0});
+const redisClient = redis.createClient({host:"127.0.0.1",port:6379, db:0});
 
 const bodyParser = require('body-parser')
 app.use(bodyParser.json());
@@ -13,7 +12,6 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
-app.use(express.static(path.join(__dirname, "../frontend")))
 
 const port = 3000
 
@@ -45,21 +43,23 @@ app.get('/sha256', async (req, res) => {
     redisClient.get(hash , async(err, cached) => {
         if (err) throw err;
         if (cached) {
-            res.send({text : "data retrieved from the cache: " + cached})
-           
-        } else{
-  
+            res.send({text : cached})
+            
+        } else{  
             postgres(async client=>client.query(`
             SELECT text FROM hash_records
             WHERE hash = '${hash}';
-        `))
+            `))
             .then(result=> {
-                redisClient.set(hash,result.rows[0].text,async (err, reply) => {
-                    if (err) throw err;
-                    console.log(reply);}
-                    )
-                res.send(result.rows[0]) 
-            
+                if(result.rows.length > 0) {
+                    redisClient.set(hash,result.rows[0].text,async (err, reply) => {
+                        if (err) throw err;
+                        console.log(reply);}
+                        )
+                    res.send(result.rows[0])
+                } else {
+                    res.status(404).send("no text found for this hash")
+                }
             })
             .catch(console.log)
         }

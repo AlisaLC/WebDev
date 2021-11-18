@@ -1,64 +1,71 @@
-<!DOCTYPE html>
-    <head>
-        <script>
-            prefix = "http://localhost:8080/"
-            function getBackend() {
-                const rbs = document.querySelectorAll('input[name="backend"]');
-                for (const rb of rbs) {
-                    if (rb.checked) {
-                        return rb.value
-                    }
-                }
-            }
-            function getHash() {
-                input_node = document.getElementById("text_input")
-                output_node = document.getElementById("hash_container")
-
-                let text = input_node.value
-                if (text.length < 8) {
-                    alert(text + " is too small (at least 8 needed)")
-                    return
-                }
-                fetch(`${prefix}${getBackend()}/sha256`, {
-                    method: "POST",
-                    body: JSON.stringify({
-                        text
-                    }),
-                    headers: {
-                        "Content-type": "application/json; charset=UTF-8"
-                    }
-                })
-                    .then(res=>res.json())
-                    .then(res=>output_node.innerHTML=res.hash)
-            }
-            function getText() {
-                input_node = document.getElementById("hash_input")
-                output_node = document.getElementById("text_container")
-                let hash = input_node.value
-                fetch(`${prefix}${getBackend()}/sha256?hash=${encodeURIComponent(hash, {method: "GET"})}`)
-                    .then(res=> {
-                        if (res.status != 200)
-                            throw "not successfull!"
-                        return res
-                    })
-                    .then(res=>res.json()).catch(res=>{ return {text: "no match!"}})
-                    .then(res=>output_node.innerHTML=res.text)
-            }
-        </script>
-    </head>
-    <body>
-        <input type="Radio" name="backend" value="go"> Go!
-        <input type="Radio" name="backend" value="nodejs" checked> NodeJS!
-
-        <div>
-            <textarea id="hash_input"></textarea>
-            <span id="text_container">text will be here</span>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="index.js">
+    </script>
+</head>
+<body>
+<div class="row justify-content-center">
+    <div class="col-sm-8">
+        <div class="card">
+            <div class="card-header">
+                Online SHA256 Hasher
+            </div>
+            <div class="card-body">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-sm-4">
+                            <div class="form-check form-check-inline">
+                                <input class="btn-check" type="radio" name="backend" id="flexRadioDefault1" checked
+                                       value="go">
+                                <label class="btn btn-outline-primary" for="flexRadioDefault1">
+                                    Go!
+                                </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="btn-check" type="radio" name="backend" id="flexRadioDefault2"
+                                       value="nodejs">
+                                <label class="btn btn-outline-success" for="flexRadioDefault2">
+                                    NodeJS!
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text">Hash</span>
+                                <textarea id="hash_input" class="form-control" aria-label="Sizing example input"
+                                          aria-describedby="inputGroup-sizing-default"></textarea>
+                                <button class="btn btn-outline-primary" type="button" onclick="getText()">Get Text!
+                                </button>
+                            </div>
+                        </div>
+                        <div id="text_container"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text">Text</span>
+                                <textarea id="text_input" class="form-control" aria-label="Sizing example input"
+                                          aria-describedby="inputGroup-sizing-default"></textarea>
+                                <button class="btn btn-outline-primary" type="button" onclick="getHash()">Get Hash!
+                                </button>
+                            </div>
+                        </div>
+                        <div id="hash_container"></div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <button onclick="getText()">Get Text!</button>        
-        <div>
-            <textarea id="text_input"></textarea>
-            <span id="hash_container">hash will be here</span>
-        </div>
-        <button onclick="getHash()">Get Hash!</button>
-    </body>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+</body>
 </html>
