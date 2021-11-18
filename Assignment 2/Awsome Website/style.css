@@ -1,0 +1,110 @@
+html *
+{
+   font-size: 1em !important;
+   color: rgb(255, 255, 255) !important;
+   font-family: B Nazanin!important;
+}
+.navbar-toggler{
+    background-color: rgb(3, 3, 3);
+    border-color: rgb(3, 3, 3);
+}
+.navbar-toggler:hover{
+    border-color: #ffb84f;
+}
+
+.list-group-item:hover{
+    background-color: rgb(3, 3, 3);
+    border-color: rgb(18, 18, 21);
+}
+.list-group-item{
+    background-color: rgb(18, 18, 21);
+}
+
+.list-group-item.active{
+    background-color: #ffb84f;
+    border-color: rgb(255, 219, 165);
+}
+
+.navbar {
+    background-color: rgb(18, 18, 21);
+    position: fixed;
+    width: 100%;
+    z-index: 2;
+}
+.navbar-brand
+{ 
+    padding: 10px;
+     background-color: #ffb84f;
+     width: 20%;
+     border: rgb(255, 219, 165);
+    border-radius: 5%;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    max-height: 38px;
+    max-width: 110px;
+}
+.navbar-brand-icon
+{ 
+     background-color: #ffb84f;
+     padding-bottom: 10px;
+     width: 20%;
+    border-radius: 5%;
+    max-height: 38px;
+    max-width: 110px;
+}
+.webdevIcon {
+
+    margin-left: -3%;
+    margin-bottom: -10%;
+    padding: 5px;
+    border-radius: 50%;
+    background-color: rgb(18, 18, 21);
+
+    
+}
+
+#curve {
+
+    width: 100%;
+    transform: scaleY(-1.05);
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    bottom: 0;
+}
+
+#curve path{
+    fill: rgb(255, 255, 255);  
+}
+
+    
+
+.topSection{
+    position: relative;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100vh;
+    background-image: url(Images/IMG_7572.png);
+    background-size: cover;
+    opacity: 100%;
+}
+
+.downSection {
+    background: white;
+    width: 100%;
+    height: 100vh;
+}
+#sidebar {
+    background-color:rgb(18, 18, 21) ;
+    
+    height: 100%;
+    position: fixed;
+    z-index: 2;
+    top: 61px;
+    left: 0;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+}
