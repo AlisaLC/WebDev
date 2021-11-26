@@ -1,8 +1,52 @@
+html, body {
+    direction: rtl !important;
+}
+
+@font-face {
+    font-family: Vazir;
+    font-weight: normal;
+    src: url("fonts/Vazir.ttf") format('truetype');
+}
+
+@font-face {
+    font-family: Vazir;
+    font-weight: bold;
+    src: url("fonts/Vazir-Bold.ttf") format('truetype');
+}
+
+*, h1, h2, h3, h4, h5 {
+    font-family: Vazir;
+}
+
+input, .header, .button {
+    font-family: Vazir !important;
+}
+
+html, body {
+    height: 100%;
+}
+
+html.ios {
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+}
+
+html.ios,html.ios body {
+    height: initial !important;
+}
+
+body > .grid {
+    height: 100%;
+}
+
+
+
+
+
+
 html *
 {
    font-size: 1em !important;
-   color: rgb(255, 255, 255) !important;
-   font-family: B Nazanin!important;
 }
 .navbar-toggler{
     background-color: rgb(3, 3, 3);
@@ -27,23 +71,21 @@ html *
 
 .navbar {
     background-color: rgb(18, 18, 21);
-    position: fixed;
+    position: sticky;
     width: 100%;
     z-index: 2;
 }
-.navbar-brand
-{ 
+.navbar-brand { 
     padding: 10px;
-     background-color: #ffb84f;
-     width: 20%;
-     border: rgb(255, 219, 165);
+    background-color: #ffb84f;
+    width: 20%;
+    border: rgb(255, 219, 165);
     border-radius: 5%;
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     max-height: 38px;
     max-width: 110px;
 }
-.navbar-brand-icon
-{ 
+.navbar-brand-icon { 
      background-color: #ffb84f;
      padding-bottom: 10px;
      width: 20%;
@@ -63,28 +105,35 @@ html *
 }
 
 #curve {
-
     width: 100%;
-    transform: scaleY(-1.05);
+    /*transform: scaleY(-1.05);*/
+    transform: scaleY(-1);
     padding: 0;
     margin: 0;
     position: absolute;
     bottom: 0;
 }
 
-#curve path{
-    fill: rgb(255, 255, 255);  
+.change-color-btn {
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 45%;
+    width: 5%;
+    height: 3%;
 }
 
-    
+#curve path{
+    fill: rgb(255, 255, 255);
+    z-index: -1;
+}
 
 .topSection{
     position: relative;
     padding: 0;
-    margin: 0;
     width: 100%;
     height: 100vh;
-    background-image: url(Images/IMG_7572.png);
+    background-image: linear-gradient(to bottom, rgba(245, 246, 252, 0.52), rgba(117, 19, 93, 0.73)), url(Images/IMG_7572.png);
     background-size: cover;
     opacity: 100%;
 }
