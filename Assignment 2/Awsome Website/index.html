@@ -1,57 +1,96 @@
-<!DOCTYPE html>
+<!doctype html>
+<html lang="fa">
 <head>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  <link rel="stylesheet" , href="style.css">
-
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>  
-  <script src="index.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <title>WebDev - HW2</title>
 </head>
-<body>  
-  <nav class="navbar navbar-expand-lg">
+<body>
+<nav class="navbar navbar-expand-lg sticky-top">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">
-        <img class="webdevIcon" src="Images/apple-touch-icon.png" width="30%" height="10%" >
-        WebDev
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar">
-        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#ffb84f" class="bi bi-list" viewBox="0 0 16 16">
-          <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
-        </svg>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarText">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">بخش اول</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">بخش دوم</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">بخش سوم</a>
-          </li>
-        </ul>
-      </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar">
+            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#ffb84f" class="bi bi-list"
+                 viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                      d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+            </svg>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">بخش اول</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">بخش دوم</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">بخش سوم</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">بخش چهارم</a>
+                </li>
+            </ul>
+        </div>
+        <a class="navbar-brand" href="#">
+            <span><img class="navbar-logo" src="Images/apple-touch-icon.png" width="30%" height="10%" alt="WebDev Logo"></span>
+            WebDev
+        </a>
     </div>
-  </nav>
-  
-  <div class="col-4 collapse collapse-horizontal ms-auto" id="sidebar">
-    <div style="width: 300px;" class="list-group" id="list-tab" role="tablist">
-      <a class="list-group-item list-group-item-action active" id="list-home-list" data-bs-toggle="list" href="#list-home" role="tab" aria-controls="list-home">بخش اول</a>
-      <a class="list-group-item list-group-item-action" id="list-profile-list" data-bs-toggle="list" href="#list-profile" role="tab" aria-controls="list-profile">بخش دوم</a>
-      <a class="list-group-item list-group-item-action" id="list-messages-list" data-bs-toggle="list" href="#list-messages" role="tab" aria-controls="list-messages">بخش سوم</a>
-      <a class="list-group-item list-group-item-action" id="list-settings-list" data-bs-toggle="list" href="#list-settings" role="tab" aria-controls="list-settings">بخش چهارم</a>
-      
-    </div>
-  </div>
+</nav>
 
-  <section class="topSection">
-    <button type="button" class="btn btn-warning change-color-btn"></button>
-    <svg id="curve" version="1.1"  viewBox="0, 0, 400,225"><g id="svgg"><path id="path0" d="M0.000 26.061 L 0.000 52.121 2.240 51.995 C 7.451 51.702,17.505 51.626,20.625 51.857 C 22.401 51.989,25.401 52.191,27.292 52.308 C 29.182 52.424,31.479 52.602,32.396 52.702 C 35.426 53.035,39.668 53.547,40.938 53.735 C 44.440 54.253,46.675 54.604,47.708 54.798 C 48.339 54.917,49.698 55.147,50.729 55.310 C 51.760 55.473,53.073 55.701,53.646 55.816 C 54.219 55.931,55.531 56.172,56.563 56.351 C 57.594 56.531,58.859 56.763,59.375 56.868 C 60.405 57.078,63.319 57.644,64.792 57.920 C 65.802 58.109,68.512 58.664,69.948 58.975 C 70.435 59.080,71.232 59.251,71.719 59.355 C 72.206 59.458,73.307 59.698,74.167 59.889 C 75.818 60.255,76.620 60.425,78.646 60.839 C 79.333 60.980,80.083 61.167,80.313 61.256 C 80.542 61.345,81.479 61.571,82.396 61.758 C 83.313 61.946,84.344 62.181,84.688 62.281 C 85.031 62.381,85.969 62.614,86.771 62.798 C 88.171 63.119,88.872 63.295,90.573 63.751 C 91.003 63.867,91.729 64.049,92.188 64.156 C 92.646 64.264,93.396 64.456,93.854 64.585 C 94.313 64.713,95.203 64.947,95.833 65.104 C 96.464 65.261,97.307 65.486,97.708 65.602 C 98.109 65.719,99.000 65.966,99.688 66.150 C 100.375 66.335,101.219 66.567,101.563 66.666 C 101.906 66.766,102.422 66.908,102.708 66.983 C 104.203 67.373,105.567 67.769,105.938 67.920 C 106.167 68.013,106.776 68.197,107.292 68.328 C 107.807 68.459,108.510 68.648,108.854 68.746 C 109.198 68.845,110.229 69.129,111.146 69.376 C 112.063 69.624,113.000 69.905,113.229 70.001 C 113.458 70.098,114.208 70.334,114.896 70.526 C 115.583 70.719,116.380 70.953,116.667 71.046 C 116.953 71.140,117.750 71.374,118.438 71.567 C 119.125 71.759,119.875 71.991,120.104 72.081 C 120.333 72.172,121.130 72.407,121.875 72.604 C 122.620 72.801,123.417 73.033,123.646 73.119 C 124.120 73.297,124.972 73.554,126.771 74.061 C 127.458 74.254,128.396 74.534,128.854 74.682 C 129.638 74.935,130.916 75.311,133.854 76.154 C 134.542 76.352,135.506 76.641,135.997 76.798 C 136.488 76.955,137.068 77.083,137.287 77.083 C 137.505 77.083,137.735 77.167,137.798 77.269 C 137.861 77.371,138.218 77.504,138.592 77.564 C 138.965 77.625,139.833 77.830,140.521 78.020 C 141.208 78.209,142.099 78.446,142.500 78.546 C 142.901 78.646,143.792 78.880,144.479 79.067 C 145.167 79.253,146.057 79.488,146.458 79.588 C 146.859 79.687,147.797 79.921,148.542 80.106 C 150.359 80.558,151.324 80.771,152.813 81.046 C 153.500 81.173,154.250 81.358,154.479 81.457 C 154.708 81.557,155.177 81.687,155.521 81.746 C 156.196 81.862,158.899 82.395,160.417 82.711 C 160.932 82.818,162.198 83.053,163.229 83.233 C 164.260 83.414,165.573 83.648,166.146 83.755 C 166.719 83.861,168.125 84.095,169.271 84.275 C 170.417 84.454,171.870 84.685,172.500 84.787 C 176.903 85.502,186.869 86.686,192.813 87.200 C 193.385 87.250,194.932 87.390,196.250 87.513 C 200.176 87.877,206.807 88.244,218.438 88.741 C 226.121 89.070,262.019 89.073,268.021 88.745 C 278.139 88.193,284.836 87.745,286.630 87.500 C 287.469 87.385,288.635 87.292,289.221 87.292 C 289.808 87.292,290.809 87.202,291.446 87.092 C 292.083 86.983,294.245 86.744,296.250 86.562 C 298.255 86.379,300.177 86.185,300.521 86.129 C 300.865 86.074,301.849 85.943,302.708 85.839 C 307.140 85.302,309.822 84.967,311.042 84.799 C 311.786 84.697,313.521 84.462,314.896 84.278 C 316.271 84.094,317.958 83.860,318.646 83.759 C 319.333 83.657,320.927 83.422,322.188 83.237 C 323.448 83.052,324.995 82.814,325.625 82.707 C 326.255 82.601,327.708 82.372,328.854 82.200 C 330.000 82.028,331.453 81.798,332.083 81.689 C 332.714 81.580,334.167 81.339,335.313 81.153 C 336.458 80.968,337.865 80.731,338.438 80.626 C 340.021 80.337,343.334 79.792,344.271 79.668 C 344.729 79.607,345.245 79.499,345.417 79.428 C 345.589 79.357,346.479 79.181,347.396 79.036 C 348.313 78.892,349.531 78.680,350.104 78.565 C 350.677 78.451,351.990 78.204,353.021 78.018 C 354.052 77.832,355.318 77.596,355.833 77.494 C 357.594 77.145,360.312 76.647,361.042 76.538 C 361.443 76.479,361.911 76.373,362.083 76.304 C 362.255 76.234,363.099 76.055,363.958 75.905 C 364.818 75.755,365.943 75.542,366.458 75.431 C 366.974 75.320,368.193 75.076,369.167 74.890 C 370.141 74.703,371.313 74.470,371.771 74.372 C 372.229 74.274,373.354 74.044,374.271 73.861 C 376.846 73.348,377.948 73.123,378.854 72.924 C 379.313 72.823,380.438 72.587,381.354 72.399 C 382.271 72.211,383.396 71.977,383.854 71.878 C 384.313 71.780,385.438 71.546,386.354 71.357 C 387.271 71.169,388.443 70.922,388.958 70.809 C 389.474 70.695,390.521 70.490,391.286 70.353 C 392.050 70.216,392.746 70.034,392.831 69.948 C 392.916 69.862,393.330 69.792,393.750 69.792 C 394.170 69.792,394.584 69.721,394.669 69.635 C 394.754 69.549,395.450 69.367,396.214 69.230 C 398.906 68.748,399.497 68.620,399.747 68.465 C 399.944 68.344,400.000 60.704,400.000 34.154 L 400.000 0.000 200.000 0.000 L 0.000 0.000 0.000 26.061 " stroke="none" fill="#fc247c" fill-rule="evenodd"></path><path id="path1" d="" stroke="none" fill="#fc2484" fill-rule="evenodd"></path><path id="path2" d="" stroke="none" fill="#100247c" fill-rule="evenodd"></path><path id="path3" d="" stroke="none" fill="#100247c" fill-rule="evenodd"></path><path id="path4"></path></g></svg>
-  </section>
-  <section class="downSection">
+<div class="col-4 collapse collapse-horizontal ms-auto" id="sidebar">
+    <div class="list-group" id="list-tab" role="tablist">
+        <a class="list-group-item list-group-item-action active" id="list-home-list" data-bs-toggle="list"
+           href="#list-home" role="tab" aria-controls="list-home">بخش اول</a>
+        <a class="list-group-item list-group-item-action" id="list-profile-list" data-bs-toggle="list"
+           href="#list-profile" role="tab" aria-controls="list-profile">بخش دوم</a>
+        <a class="list-group-item list-group-item-action" id="list-messages-list" data-bs-toggle="list"
+           href="#list-messages" role="tab" aria-controls="list-messages">بخش سوم</a>
+        <a class="list-group-item list-group-item-action" id="list-settings-list" data-bs-toggle="list"
+           href="#list-settings" role="tab" aria-controls="list-settings">بخش چهارم</a>
+    </div>
+</div>
+
+<section class="topSection">
+    <svg id="curve" viewBox="0, 0, 400,225">
+        <g id="svgg">
+            <path id="path0"
+                  d="M0.000 26.061 L 0.000 52.121 2.240 51.995 C 7.451 51.702,17.505 51.626,20.625 51.857 C 22.401 51.989,25.401 52.191,27.292 52.308 C 29.182 52.424,31.479 52.602,32.396 52.702 C 35.426 53.035,39.668 53.547,40.938 53.735 C 44.440 54.253,46.675 54.604,47.708 54.798 C 48.339 54.917,49.698 55.147,50.729 55.310 C 51.760 55.473,53.073 55.701,53.646 55.816 C 54.219 55.931,55.531 56.172,56.563 56.351 C 57.594 56.531,58.859 56.763,59.375 56.868 C 60.405 57.078,63.319 57.644,64.792 57.920 C 65.802 58.109,68.512 58.664,69.948 58.975 C 70.435 59.080,71.232 59.251,71.719 59.355 C 72.206 59.458,73.307 59.698,74.167 59.889 C 75.818 60.255,76.620 60.425,78.646 60.839 C 79.333 60.980,80.083 61.167,80.313 61.256 C 80.542 61.345,81.479 61.571,82.396 61.758 C 83.313 61.946,84.344 62.181,84.688 62.281 C 85.031 62.381,85.969 62.614,86.771 62.798 C 88.171 63.119,88.872 63.295,90.573 63.751 C 91.003 63.867,91.729 64.049,92.188 64.156 C 92.646 64.264,93.396 64.456,93.854 64.585 C 94.313 64.713,95.203 64.947,95.833 65.104 C 96.464 65.261,97.307 65.486,97.708 65.602 C 98.109 65.719,99.000 65.966,99.688 66.150 C 100.375 66.335,101.219 66.567,101.563 66.666 C 101.906 66.766,102.422 66.908,102.708 66.983 C 104.203 67.373,105.567 67.769,105.938 67.920 C 106.167 68.013,106.776 68.197,107.292 68.328 C 107.807 68.459,108.510 68.648,108.854 68.746 C 109.198 68.845,110.229 69.129,111.146 69.376 C 112.063 69.624,113.000 69.905,113.229 70.001 C 113.458 70.098,114.208 70.334,114.896 70.526 C 115.583 70.719,116.380 70.953,116.667 71.046 C 116.953 71.140,117.750 71.374,118.438 71.567 C 119.125 71.759,119.875 71.991,120.104 72.081 C 120.333 72.172,121.130 72.407,121.875 72.604 C 122.620 72.801,123.417 73.033,123.646 73.119 C 124.120 73.297,124.972 73.554,126.771 74.061 C 127.458 74.254,128.396 74.534,128.854 74.682 C 129.638 74.935,130.916 75.311,133.854 76.154 C 134.542 76.352,135.506 76.641,135.997 76.798 C 136.488 76.955,137.068 77.083,137.287 77.083 C 137.505 77.083,137.735 77.167,137.798 77.269 C 137.861 77.371,138.218 77.504,138.592 77.564 C 138.965 77.625,139.833 77.830,140.521 78.020 C 141.208 78.209,142.099 78.446,142.500 78.546 C 142.901 78.646,143.792 78.880,144.479 79.067 C 145.167 79.253,146.057 79.488,146.458 79.588 C 146.859 79.687,147.797 79.921,148.542 80.106 C 150.359 80.558,151.324 80.771,152.813 81.046 C 153.500 81.173,154.250 81.358,154.479 81.457 C 154.708 81.557,155.177 81.687,155.521 81.746 C 156.196 81.862,158.899 82.395,160.417 82.711 C 160.932 82.818,162.198 83.053,163.229 83.233 C 164.260 83.414,165.573 83.648,166.146 83.755 C 166.719 83.861,168.125 84.095,169.271 84.275 C 170.417 84.454,171.870 84.685,172.500 84.787 C 176.903 85.502,186.869 86.686,192.813 87.200 C 193.385 87.250,194.932 87.390,196.250 87.513 C 200.176 87.877,206.807 88.244,218.438 88.741 C 226.121 89.070,262.019 89.073,268.021 88.745 C 278.139 88.193,284.836 87.745,286.630 87.500 C 287.469 87.385,288.635 87.292,289.221 87.292 C 289.808 87.292,290.809 87.202,291.446 87.092 C 292.083 86.983,294.245 86.744,296.250 86.562 C 298.255 86.379,300.177 86.185,300.521 86.129 C 300.865 86.074,301.849 85.943,302.708 85.839 C 307.140 85.302,309.822 84.967,311.042 84.799 C 311.786 84.697,313.521 84.462,314.896 84.278 C 316.271 84.094,317.958 83.860,318.646 83.759 C 319.333 83.657,320.927 83.422,322.188 83.237 C 323.448 83.052,324.995 82.814,325.625 82.707 C 326.255 82.601,327.708 82.372,328.854 82.200 C 330.000 82.028,331.453 81.798,332.083 81.689 C 332.714 81.580,334.167 81.339,335.313 81.153 C 336.458 80.968,337.865 80.731,338.438 80.626 C 340.021 80.337,343.334 79.792,344.271 79.668 C 344.729 79.607,345.245 79.499,345.417 79.428 C 345.589 79.357,346.479 79.181,347.396 79.036 C 348.313 78.892,349.531 78.680,350.104 78.565 C 350.677 78.451,351.990 78.204,353.021 78.018 C 354.052 77.832,355.318 77.596,355.833 77.494 C 357.594 77.145,360.312 76.647,361.042 76.538 C 361.443 76.479,361.911 76.373,362.083 76.304 C 362.255 76.234,363.099 76.055,363.958 75.905 C 364.818 75.755,365.943 75.542,366.458 75.431 C 366.974 75.320,368.193 75.076,369.167 74.890 C 370.141 74.703,371.313 74.470,371.771 74.372 C 372.229 74.274,373.354 74.044,374.271 73.861 C 376.846 73.348,377.948 73.123,378.854 72.924 C 379.313 72.823,380.438 72.587,381.354 72.399 C 382.271 72.211,383.396 71.977,383.854 71.878 C 384.313 71.780,385.438 71.546,386.354 71.357 C 387.271 71.169,388.443 70.922,388.958 70.809 C 389.474 70.695,390.521 70.490,391.286 70.353 C 392.050 70.216,392.746 70.034,392.831 69.948 C 392.916 69.862,393.330 69.792,393.750 69.792 C 394.170 69.792,394.584 69.721,394.669 69.635 C 394.754 69.549,395.450 69.367,396.214 69.230 C 398.906 68.748,399.497 68.620,399.747 68.465 C 399.944 68.344,400.000 60.704,400.000 34.154 L 400.000 0.000 200.000 0.000 L 0.000 0.000 0.000 26.061 "
+                  stroke="none" fill="#fc247c" fill-rule="evenodd"></path>
+            <path id="path1" d="" stroke="none" fill="#fc2484" fill-rule="evenodd"></path>
+            <path id="path2" d="" stroke="none" fill="#100247c" fill-rule="evenodd"></path>
+            <path id="path3" d="" stroke="none" fill="#100247c" fill-rule="evenodd"></path>
+            <path id="path4" d=""></path>
+        </g>
+    </svg>
+    <div class="container header-text">
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <h1><b>لورم ایپسوم</b></h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-8">
+                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از
+            </div>
+        </div>
+        <div class="row justify-content-md-center">
+            <div class="col-md-4">
+                <button type="button" class="btn btn-warning change-color-btn">لورم</button>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="downSection">
     <br/>
-  </section>
+</section>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+<script src="index.js"></script>
 </body>
+</html>
