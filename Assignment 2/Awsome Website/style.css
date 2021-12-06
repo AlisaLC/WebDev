@@ -246,8 +246,11 @@ body > .grid {
     margin-left: 10px;
 }
 
-.card {
+.card-round {
     border-radius: 7%;
+}
+
+.card {
     margin: 9%;
 
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -273,7 +276,7 @@ body > .grid {
     transform:scale(1.25);
 }
 
-.card .card-header {
+.card-round .card-header {
     border-radius: 7% 7% 0 0;
 }
 
@@ -315,4 +318,30 @@ body > .grid {
 
 .contact-us .icon:hover {
     background-color: #FFBA10;
+}
+
+.card-horizontal {
+    display: flex;
+    flex: 1 1 auto;
+}
+
+.card-horizontal-img {
+    border-radius: 3%;
+}
+
+.card-horizontal-img-container {
+    position: relative;
+}
+
+.card-horizontal-img-container .near-image {
+    position: absolute;
+
+    background-color: yellow;
+    color: white;
+    font-weight: bolder;
+    font-size: larger;
+    padding: 7px 13px;
+    border-radius: 50%;
+    top: 60%;
+    left: 30px;
 }
