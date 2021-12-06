@@ -161,22 +161,6 @@ body > .grid {
     margin-top: 25px;
 }
 
-.card {
-    margin: 9%;
-}
-
-.center-card {
-    -webkit-transform:scale(1.25);
-    -moz-transform:scale(1.25);
-    -ms-transform:scale(1.25);
-    -o-transform:scale(1.25);
-    transform:scale(1.25);
-}
-
-.card:hover {
-    opacity: 0.7;
-}
-
 .overlay-container {
     position: relative;
 }
@@ -230,4 +214,67 @@ body > .grid {
     height: 30px;
     right: -5%;
     top: 48%
+}
+
+.bullet::before {
+    content: ">";
+    color: white;
+    font-weight: bolder;
+    background-color: #FFBA10;
+    border-color: black;
+    border-radius: 50%;
+    padding: 7px 10px;
+    margin-left: 10px;
+}
+
+.card {
+    border-radius: 7%;
+    margin: 9%;
+
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.card .card-header {
+    background-color: blue;
+    padding: 1em;
+    color: white;
+    position: relative;
+}
+
+.card-important {
+    -webkit-transform:scale(1.25);
+    -moz-transform:scale(1.25);
+    -ms-transform:scale(1.25);
+    -o-transform:scale(1.25);
+    transform:scale(1.25);
+}
+
+.card .card-header {
+    border-radius: 7% 7% 0 0;
+}
+
+.card-important .card-header {
+    background-color: red;
+}
+
+.card-important .card-header ::after {
+    content: 'مهم';
+    background-color: darkred;
+    font-weight: bolder;
+    font-size: larger;
+    padding: 6px 13px;
+    transform: rotate(-90deg);
+    position: absolute;
+    border-radius: 7%;
+    top: 0;
+    left: 10px;
+}
+
+.carousel-inner {
+    padding: 10% 0;
 }
