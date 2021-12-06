@@ -214,3 +214,20 @@ body > .grid {
 .mainSection {
     margin-bottom: 10vh;
 }
+
+.left-button {
+    background: black;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    left: -5%;
+    top: 48%
+}
+.right-button {
+    background: black;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    right: -5%;
+    top: 48%
+}
