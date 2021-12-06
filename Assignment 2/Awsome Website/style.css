@@ -291,3 +291,26 @@ body > .grid {
     top: 0;
     left: 10px;
 }
+
+.contact-us {
+    background-color: darkslateblue;
+    clip-path: polygon(0 0, 50% 100px, 100% 0px, 100% calc(100% - 100px), 50% 100%, 0 calc(100% - 100px));
+    height: 540px;
+}
+
+.contact-us .icon-container {
+    direction: ltr;
+    margin-top: 110px;
+}
+
+.contact-us .icon {
+    width: 120px;
+    height: 120px;
+    display: block;
+    direction: ltr !important;
+    clip-path: circle(57px);
+}
+
+.contact-us .icon:hover {
+    background-color: #FFBA10;
+}
