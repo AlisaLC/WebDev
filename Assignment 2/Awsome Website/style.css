@@ -1,3 +1,16 @@
+@media only screen and (max-width: 600px) {
+    .large-screen {
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 601px) {
+    .small-screen {
+        display: none;
+    }
+}
+
+
 @font-face {
     font-family: 'Nazanin';
     src: url('https://cdn.fontcdn.ir/Font/Persian/Nazanin/Nazanin.eot');
@@ -182,7 +195,11 @@ body > .grid {
     transition: 0.5s ease;
 }
 
-.overlay-content:hover {
+.large-screen .overlay-content:hover {
+    opacity: 1;
+}
+
+.small-screen .overlay-content:active {
     opacity: 1;
 }
 
@@ -246,7 +263,7 @@ body > .grid {
     position: relative;
 }
 
-.card-important {
+.large-screen .card-important {
     -webkit-transform:scale(1.25);
     -moz-transform:scale(1.25);
     -ms-transform:scale(1.25);
@@ -273,8 +290,4 @@ body > .grid {
     border-radius: 7%;
     top: 0;
     left: 10px;
-}
-
-.carousel-inner {
-    padding: 10% 0;
 }
