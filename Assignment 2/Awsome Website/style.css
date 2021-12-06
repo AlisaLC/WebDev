@@ -187,20 +187,22 @@ body > .grid {
     right: 0;
     bottom: 0;
 
-    background-color: rgba(0,0,0, 0.6);
+    background-color: #000;
     text-align: center;
 
-    opacity: 0;
+    opacity: 0.6;
 
+    transform-origin: 0 0;
+    transform: scaleY(0);
     transition: 0.5s ease;
 }
 
-.large-screen .overlay-content:hover {
-    opacity: 1;
+.large-screen .overlay-container:hover .overlay-content {
+    transform: scaleY(1);
 }
 
-.small-screen .overlay-content:active {
-    opacity: 1;
+.small-screen .overlay-container:active .overlay-content {
+    transform: scaleY(1);
 }
 
 .overlay-inner {
