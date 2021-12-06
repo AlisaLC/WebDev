@@ -197,3 +197,37 @@ body > .grid {
 .carousel-inner {
     overflow: visible;
 }
+
+
+.overlay-container {
+    position: relative;
+}
+.overlay-content {
+    color: wheat;
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    background-color: rgba(0,0,0, 0.6);
+    text-align: center;
+
+    opacity: 0;
+
+    transition: 0.5s ease;
+}
+
+.overlay-content:hover {
+    opacity: 1;
+}
+
+.overlay-inner {
+    margin: 40% auto;
+}
+
+.overlay-content a {
+    text-decoration: none;
+}
