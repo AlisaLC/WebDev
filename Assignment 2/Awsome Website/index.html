@@ -14,52 +14,57 @@
     <title>WebDev - HW2</title>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg sticky-top">
-    <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar">
-            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#ffb84f" class="bi bi-list"
-                 viewBox="0 0 16 16">
-                <path fill-rule="evenodd"
-                      d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
-            </svg>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarText">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">بخش اول</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">بخش دوم</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">بخش سوم</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">بخش چهارم</a>
-                </li>
-            </ul>
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar">
+                <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#ffb84f" class="bi bi-list"
+                     viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                          d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+                </svg>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#section1">بخش اول</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#section2">بخش دوم</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#section3">بخش سوم</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#section4">بخش چهارم</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#section5">بخش پنجم</a>
+                    </li>
+                </ul>
+            </div>
+            <a class="navbar-brand" href="#">
+                <span><img class="navbar-logo" src="Images/apple-touch-icon.png" width="30%" height="10%" alt="WebDev Logo"></span>
+                WebDev
+            </a>
         </div>
-        <a class="navbar-brand" href="#">
-            <span><img class="navbar-logo" src="Images/apple-touch-icon.png" width="30%" height="10%" alt="WebDev Logo"></span>
-            WebDev
-        </a>
-    </div>
-</nav>
+    </nav>
 
 <div class="col-4 collapse collapse-horizontal ms-auto" id="sidebar">
     <div class="list-group" id="list-tab" role="tablist">
-        <a class="list-group-item list-group-item-action active" id="list-home-list" data-bs-toggle="list"
-           href="#list-home" role="tab" aria-controls="list-home">بخش اول</a>
-        <a class="list-group-item list-group-item-action" id="list-profile-list" data-bs-toggle="list"
-           href="#list-profile" role="tab" aria-controls="list-profile">بخش دوم</a>
-        <a class="list-group-item list-group-item-action" id="list-messages-list" data-bs-toggle="list"
-           href="#list-messages" role="tab" aria-controls="list-messages">بخش سوم</a>
-        <a class="list-group-item list-group-item-action" id="list-settings-list" data-bs-toggle="list"
-           href="#list-settings" role="tab" aria-controls="list-settings">بخش چهارم</a>
+        <a class="list-group-item list-group-item-action active" data-bs-toggle="list"
+           href="#section1" role="tab" aria-controls="list-home">بخش اول</a>
+        <a class="list-group-item list-group-item-action" data-bs-toggle="list"
+           href="#section2" role="tab" aria-controls="list-profile">بخش دوم</a>
+        <a class="list-group-item list-group-item-action" data-bs-toggle="list"
+           href="#section3" role="tab" aria-controls="list-messages">بخش سوم</a>
+        <a class="list-group-item list-group-item-action" data-bs-toggle="list"
+           href="#section4" role="tab" aria-controls="list-settings">بخش چهارم</a>
+        <a class="list-group-item list-group-item-action" data-bs-toggle="list"
+           href="#section5" role="tab" aria-controls="list-settings">بخش پنجم</a>
     </div>
 </div>
 
-<section class="topSection">
+<section class="topSection mainSection" id="section1">
     <svg id="curve" viewBox="0, 0, 400,225">
         <g id="svgg">
             <path id="path0"
@@ -92,7 +97,7 @@
     </div>
 </section>
 
-<section class="downSection">
+<section class="mainSection" id="section2">
     <div class="container my-4">
 
         <div id="multi-item-example" class="carousel slide carousel-multi-item" data-bs-ride="carousel">
@@ -116,7 +121,7 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="card mb-2">
-                                <img class="card-img-top" src="Images/IMG_7572.jpg"
+                                <img class="card-img-top" src="Images/6.jpg"
                                      alt="Card image cap">
                                 <div class="card-body">
                                     <h4 class="card-title">Card title</h4>
@@ -129,7 +134,7 @@
 
                         <div class="col-md-4 clearfix d-none d-md-block">
                             <div class="center-card card mb-2">
-                                <img class="card-img-top" src="Images/IMG_7572.jpg"
+                                <img class="card-img-top" src="Images/7.jpg"
                                      alt="Card image cap">
                                 <div class="card-body">
                                     <h4 class="card-title">Card title</h4>
@@ -142,7 +147,7 @@
 
                         <div class="col-md-4 clearfix d-none d-md-block">
                             <div class="card mb-2">
-                                <img class="card-img-top" src="Images/IMG_7572.jpg"
+                                <img class="card-img-top" src="Images/8.jpg"
                                      alt="Card image cap">
                                 <div class="card-body">
                                     <h4 class="card-title">Card title</h4>
@@ -160,7 +165,7 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="card mb-2">
-                                <img class="card-img-top" src="Images/IMG_7572.jpg"
+                                <img class="card-img-top" src="Images/9.jpg"
                                      alt="Card image cap">
                                 <div class="card-body">
                                     <h4 class="card-title">Card title</h4>
@@ -173,7 +178,7 @@
 
                         <div class="col-md-4 clearfix d-none d-md-block">
                             <div class="center-card card mb-2">
-                                <img class="card-img-top" src="Images/IMG_7572.jpg"
+                                <img class="card-img-top" src="Images/10.jpg"
                                      alt="Card image cap">
                                 <div class="card-body">
                                     <h4 class="card-title">Card title</h4>
@@ -186,7 +191,7 @@
 
                         <div class="col-md-4 clearfix d-none d-md-block">
                             <div class="card mb-2">
-                                <img class="card-img-top" src="Images/IMG_7572.jpg"
+                                <img class="card-img-top" src="Images/1.jpg"
                                      alt="Card image cap">
                                 <div class="card-body">
                                     <h4 class="card-title">Card title</h4>
@@ -202,6 +207,79 @@
         </div>
     </div>
 </section>
+
+
+
+
+
+
+
+
+
+<section class="mainSection" id="section3">
+    <div class="container w-100">
+        <div class="row m-3">
+            <div class="col-md-6">
+                <div class="overlay-container">
+                    <img src="Images/1.jpg" class="img-fluid w-100">
+                    <div class="overlay-content">
+                        <div class="overlay-inner">
+                            <h3 class="text-center">لورم ایپسوم</h3>
+                            <a href="#">توضیحات بیشتر</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="overlay-container">
+                    <img src="Images/2.jpg" class="img-fluid w-100">
+                    <div class="overlay-content">
+                        <div class="overlay-inner">
+                            <h3 class="text-center">لورم ایپسوم</h3>
+                            <a href="#">توضیحات بیشتر</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row m-3">
+            <div class="col-md-4">
+                <div class="overlay-container">
+                    <img src="Images/3.jpg" class="img-fluid w-100">
+                    <div class="overlay-content">
+                        <div class="overlay-inner">
+                            <h3 class="text-center">لورم ایپسوم</h3>
+                            <a href="#">توضیحات بیشتر</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="overlay-container">
+                    <img src="Images/4.jpg" class="img-fluid w-100">
+                    <div class="overlay-content">
+                        <div class="overlay-inner">
+                            <h3 class="text-center">لورم ایپسوم</h3>
+                            <a href="#">توضیحات بیشتر</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="overlay-container">
+                    <img src="Images/5.jpg" class="img-fluid w-100">
+                    <div class="overlay-content">
+                        <div class="overlay-inner">
+                            <h3 class="text-center">لورم ایپسوم</h3>
+                            <a href="#">توضیحات بیشتر</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 
 </body>
 </html>

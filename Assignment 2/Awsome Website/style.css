@@ -73,6 +73,7 @@ body > .grid {
     position: sticky;
     width: 100%;
     z-index: 2;
+    transition: ease-in-out 0.7s;
 }
 
 .navbar .nav-item a {
@@ -160,44 +161,21 @@ body > .grid {
     margin-top: 25px;
 }
 
-.downSection {
-    background: white;
-}
-
 .card {
     margin: 9%;
 }
 
 .center-card {
-    -webkit-transform:scale(1.15);
-    -moz-transform:scale(1.15);
-    -ms-transform:scale(1.15);
-    -o-transform:scale(1.15);
-    transform:scale(1.15);
-}
-
-.center-card:hover {
-    opacity: 0.7;
-    -webkit-transform:scale(1.35);
-    -moz-transform:scale(1.35);
-    -ms-transform:scale(1.35);
-    -o-transform:scale(1.35);
-    transform:scale(1.35);
+    -webkit-transform:scale(1.25);
+    -moz-transform:scale(1.25);
+    -ms-transform:scale(1.25);
+    -o-transform:scale(1.25);
+    transform:scale(1.25);
 }
 
 .card:hover {
     opacity: 0.7;
-    -webkit-transform:scale(1.15);
-    -moz-transform:scale(1.15);
-    -ms-transform:scale(1.15);
-    -o-transform:scale(1.15);
-    transform:scale(1.15);
 }
-
-.carousel-inner {
-    overflow: visible;
-}
-
 
 .overlay-container {
     position: relative;
@@ -230,4 +208,9 @@ body > .grid {
 
 .overlay-content a {
     text-decoration: none;
+}
+
+
+.mainSection {
+    margin-bottom: 10vh;
 }

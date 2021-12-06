@@ -6,4 +6,22 @@ $(document).ready(function () {
             backgroundImage: `linear-gradient(to bottom, rgba(${getRandomColor()}, 0.52), rgba(${getRandomColor()}, 0.73)), url(Images/IMG_7572.png)`
         })
     })
+
+
+    let prevScroll = -100;
+    $(document).scroll(function () {
+        let currentScroll = $(this).scrollTop();
+        if (prevScroll > currentScroll) {
+            $(".navbar").css({opacity: 1})
+        } else {
+            $(".navbar").css({opacity: 0})
+        }
+        prevScroll = currentScroll;
+    })
+
+    $('.navbar').hover(function () {
+        $(".navbar").css({opacity: 1})
+    })
+
+
 });
