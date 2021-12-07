@@ -407,6 +407,11 @@ body.dark-mode .navbar-brand {
 
 .news .title {
     color: white;
+    text-align: center;
+}
+
+.news input {
+    margin-bottom: 10px;
 }
 
 .footer {
