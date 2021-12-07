@@ -23,5 +23,12 @@ $(document).ready(function () {
         $(".navbar").css({opacity: 1})
     })
 
+    // to reset form
+    $('.modal').on('hidden.bs.modal', function () {
+        $('form').trigger('reset')
+    })
 
+    $('#toastActivator').click(function () {
+        new bootstrap.Toast($('#myToast')).show()
+    })
 });

@@ -520,7 +520,7 @@
                     <input type="text" class="form-control" placeholder="ایمیل">
                 </div>
                 <div class="col">
-                    <button type="button" class="form-control btn btn-warning">ثبت</button>
+                    <button type="button" class="form-control btn btn-warning" data-bs-toggle="modal" data-bs-target="#myModal">ثبت</button>
                 </div>
             </div>
         </form>
@@ -531,7 +531,34 @@
             <p>Copyright2021 Your Name | Design by Your Name</p>
         </div>
     </div>
-</section>
 
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    آیا از اطلاعات وارد شده اطمینان دارید؟
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning" data-bs-dismiss="modal">خیر</button>
+                    <button type="button" class="btn btn-success" data-bs-dismiss="modal" id="toastActivator">بله</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast-->
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+        <div id="myToast" class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                <div class="toast-body">
+                    اطلاعات فرستاده شد!
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
 </body>
 </html>
