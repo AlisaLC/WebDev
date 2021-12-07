@@ -271,13 +271,24 @@ body.dark-mode .navbar-brand {
 
 .bullet::before {
     content: ">";
+    font-size: 2em !important;
     color: white;
     font-weight: bolder;
     background-color: #FFBA10;
-    border-color: black;
     border-radius: 50%;
-    padding: 7px 10px;
+    padding: 7px 12px;
     margin-left: 10px;
+}
+
+.bullet {
+    color: #6d5c60;
+}
+.bullet:hover {
+    color: black;
+}
+
+.card-round:hover {
+    transform: scale(1.1);
 }
 
 .card-round {
@@ -308,6 +319,14 @@ body.dark-mode .navbar-brand {
     -ms-transform:scale(1.25);
     -o-transform:scale(1.25);
     transform:scale(1.25);
+}
+
+.large-screen .card-important:hover {
+    -webkit-transform:scale(1.35);
+    -moz-transform:scale(1.35);
+    -ms-transform:scale(1.35);
+    -o-transform:scale(1.35);
+    transform:scale(1.35);
 }
 
 .card-round .card-header {
