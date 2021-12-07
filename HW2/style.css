@@ -347,7 +347,7 @@ body.dark-mode .navbar-brand {
     height: 120px;
     display: block;
     direction: ltr !important;
-    clip-path: circle(57px);
+    clip-path: circle(61px);
 }
 
 .contact-us .icon:hover {
@@ -510,4 +510,8 @@ body.dark-mode .navbar-brand {
 
 #section5 h1{
     font-size: 5em !important;
+}
+
+.news label {
+    color: white;
 }
