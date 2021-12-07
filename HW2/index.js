@@ -7,6 +7,10 @@ $(document).ready(function () {
         })
     })
 
+    $(".navbar-brand").click(function () {
+        $("body").toggleClass("light-mode")
+        $("body").toggleClass("dark-mode")
+    })
 
     let prevScroll = -100;
     $(document).scroll(function () {

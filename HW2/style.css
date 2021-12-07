@@ -31,7 +31,15 @@
 
 html, body {
     direction: rtl !important;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
+}
+
+body.light-mode {
     background-color: #ffbcd1;
+}
+
+body.dark-mode {    
+    background-color: #57004b;
 }
 
 html.ios {
@@ -88,15 +96,26 @@ a {
 }
 
 .navbar {
-    background-color: rgb(18, 18, 21);
     position: sticky;
     width: 100%;
     z-index: 2;
     transition: ease-in-out 0.7s;
 }
 
-.navbar .nav-item a {
+body.light-mode .navbar {
+    background-color: rgb(18, 18, 21);
+}
+
+body.dark-mode .navbar {
+    background-color: rgb(68, 68, 68);
+}
+
+body.light-mode .navbar .nav-item a {
     color: white;
+}
+
+body.dark-mode .navbar .nav-item a {
+    color: rgb(184, 184, 184);
 }
 
 .navbar .nav-item a:hover:not(.navbar-brand) {
@@ -105,16 +124,25 @@ a {
 
 .navbar-brand {
     padding: 4px;
-    background-color: #ffb84f;
     width: 20%;
-    border: rgb(255, 219, 165);
     border-radius: 5%;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: 1.1em;
-    color: white;
     max-height: 38px;
     max-width: 110px;
     transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
+}
+
+body.light-mode .navbar-brand {
+    background-color: #ffb84f;
+    border: rgb(255, 219, 165);
+    color: white;
+}
+
+body.dark-mode .navbar-brand {
+    background-color: #ffb84f;
+    border: rgb(255, 219, 165);
+    color: black;
 }
 
 .navbar-brand:hover {
@@ -338,17 +366,33 @@ a {
     position: relative;
 }
 
-.card-horizontal-img-container .near-image {
+.near-image {
     position: absolute;
-
-    background-color: yellow;
+    background-color: rgb(209, 178, 0);
     color: white;
     font-weight: bolder;
-    font-size: larger;
-    padding: 7px 13px;
+    font-size: 3em !important;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
+    text-align: center;
+}
+
+.card-horizontal-img-container .near-image {
     top: 60%;
     left: 30px;
+}
+
+.card-image-bottom-container {
+    position: relative;
+    text-align: center;
+}
+
+.card-image-bottom-container .near-image {
+    top: -25px;
+    left: 0;
+    right: 0;
+    margin: auto;
 }
 
 
@@ -456,4 +500,8 @@ a {
 .image-stack-container-right .stack-picture + .stack-picture + .stack-picture {
     top: -60px;
     right: 60px;
+}
+
+#section5 h1{
+    font-size: 5em !important;
 }

@@ -13,7 +13,7 @@
     <script src="index.js"></script>
     <title>WebDev - HW2</title>
 </head>
-<body>
+<body class="light-mode">
     <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container-fluid">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar">
@@ -48,7 +48,7 @@
                     </li>
                 </ul>
             </div>
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand">
                 <span><img class="navbar-logo" src="Images/apple-touch-icon.png" width="30%" height="10%" alt="WebDev Logo"></span>
                 WebDev
             </a>
@@ -171,7 +171,7 @@
 
 
     <div class="container my-4 small-screen">
-        <div class="row" style="display: flex; justify-content: center">
+        <div class="row">
             <div class="col-md-4">
                 <div class="card card-round mb-2">
                     <div class="card-header">
@@ -192,6 +192,8 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="row">
             <div class="col-md-4">
                 <div class="card card-round card-important mb-2">
                     <div class="card-header">
@@ -212,6 +214,8 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="row">
             <div class="col-md-4">
                 <div class="card card-round mb-2">
                     <div class="card-header">
@@ -412,7 +416,7 @@
         <div class="row h-100">
             <div class="col-6">
                 <div class="icon-container">
-                    <img src="Images/whatsapp.png" class="icon">
+                    <img src="Images/instagram.png" class="icon">
                     <img src="Images/whatsapp.png" class="icon">
                     <img src="Images/whatsapp.png" class="icon">
                 </div>
@@ -432,7 +436,7 @@
     <div class="d-flex justify-content-center"><h1>نظرات کاربران</h1></div>
 
 
-    <div class="container large-screen">
+    <div class="container">
         <div id="comments-carousel" class="carousel slide carousel-multi-item" data-bs-ride="carousel">
             <button class="carousel-control-prev left-button" type="button" data-bs-target="#comments-carousel" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -446,15 +450,26 @@
                 <div class="carousel-item active">
                     <div class="d-flex justify-content-center">
                         <div class="card" style="width: 66%">
-                            <div class="row no-gutters">
-                                <div class="col-6 card-horizontal-img-container d-flex justify-content-center">
-                                    <img src="Images/10.jpg" class="card-horizontal-img w-75">
-                                    <div class="near-image">،،</div>
-                                </div>
-                                <div class="col">
-                                    <div class="card-block px-2">
-                                        <p style="font-size: 30px;">لورم اپیسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگر‌ها و بلکه روزنامه و مجله در ستون و سطر آنچنان</p>
+                            <div class="large-screen">
+                                <div class="row no-gutters">
+                                    <div class="col-6 card-horizontal-img-container d-flex justify-content-center">
+                                        <img src="Images/10.jpg" class="card-horizontal-img w-75">
+                                        <div class="near-image">"</div>
                                     </div>
+                                    <div class="col">
+                                        <div class="card-block px-2">
+                                            <p style="font-size: 30px;">لورم اپیسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگر‌ها و بلکه روزنامه و مجله در ستون و سطر آنچنان</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="small-screen">
+                                <div class="card-body">
+                                    <p style="font-size: 30px;">لورم اپیسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگر‌ها و بلکه روزنامه و مجله در ستون و سطر آنچنان</p>
+                                </div>
+                                <div class="card-image-bottom-container">
+                                    <div class="near-image">"</div>
+                                    <img src="Images/10.jpg" class="card-img-bottom">
                                 </div>
                             </div>
                         </div>
@@ -463,33 +478,54 @@
                 <div class="carousel-item">
                     <div class="d-flex justify-content-center">
                         <div class="card" style="width: 66%">
-                            <div class="row no-gutters">
-                                <div class="col-6 card-horizontal-img-container d-flex justify-content-center">
-                                    <img src="Images/9.jpg" class="card-horizontal-img w-75">
-                                    <div class="near-image">،،</div>
-                                </div>
-                                <div class="col">
-                                    <div class="card-block px-2">
-                                        <p style="font-size: 30px;">لورم اپیسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگر‌ها و بلکه روزنامه و مجله در ستون و سطر آنچنان</p>
+                            <div class="large-screen">
+                                <div class="row no-gutters">
+                                    <div class="col-6 card-horizontal-img-container d-flex justify-content-center">
+                                        <img src="Images/9.jpg" class="card-horizontal-img w-75">
+                                        <div class="near-image">"</div>
                                     </div>
+                                    <div class="col">
+                                        <div class="card-block px-2">
+                                            <p style="font-size: 30px;">لورم اپیسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگر‌ها و بلکه روزنامه و مجله در ستون و سطر آنچنان</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="small-screen">
+                                <div class="card-body">
+                                    <p style="font-size: 30px;">لورم اپیسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگر‌ها و بلکه روزنامه و مجله در ستون و سطر آنچنان</p>
+                                </div>
+                                <div class="card-image-bottom-container">
+                                    <div class="near-image">"</div>
+                                    <img src="Images/9.jpg" class="card-img-bottom">
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
                 <div class="carousel-item">
                     <div class="d-flex justify-content-center">
                         <div class="card" style="width: 66%">
-                            <div class="row no-gutters">
-                                <div class="col-6 card-horizontal-img-container d-flex justify-content-center">
-                                    <img src="Images/8.jpg" class="card-horizontal-img w-75">
-                                    <div class="near-image">،،</div>
-                                </div>
-                                <div class="col">
-                                    <div class="card-block px-2">
-                                        <p style="font-size: 30px;">لورم اپیسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگر‌ها و بلکه روزنامه و مجله در ستون و سطر آنچنان</p>
+                            <div class="large-screen">
+                                <div class="row no-gutters">
+                                    <div class="col-6 card-horizontal-img-container d-flex justify-content-center">
+                                        <img src="Images/8.jpg" class="card-horizontal-img w-75">
+                                        <div class="near-image">"</div>
                                     </div>
+                                    <div class="col">
+                                        <div class="card-block px-2">
+                                            <p style="font-size: 30px;">لورم اپیسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگر‌ها و بلکه روزنامه و مجله در ستون و سطر آنچنان</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="small-screen">
+                                <div class="card-body">
+                                    <p style="font-size: 30px;">لورم اپیسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگر‌ها و بلکه روزنامه و مجله در ستون و سطر آنچنان</p>
+                                </div>
+                                <div class="card-image-bottom-container">
+                                    <div class="near-image">"</div>
+                                    <img src="Images/8.jpg" class="card-img-bottom">
                                 </div>
                             </div>
                         </div>
@@ -497,10 +533,6 @@
                 </div>
             </div>
         </div>
-    </div>
-
-    <div class="small-screen">
-        TODO
     </div>
 
 </section>
