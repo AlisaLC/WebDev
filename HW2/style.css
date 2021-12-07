@@ -367,6 +367,7 @@ body.dark-mode .navbar-brand {
     display: block;
     direction: ltr !important;
     clip-path: circle(61px);
+    transition: background-color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
 }
 
 .contact-us .icon:hover {
@@ -456,15 +457,12 @@ body.dark-mode .navbar-brand {
     margin-bottom: 0;
 }
 
-
-.image-stack-and-text img {
+.image-stack-and-text .large-screen img {
+    width: 400px;
+    height: 400px;
     border: solid white 8px;
 }
 
-.image-stack-and-text img {
-    width: 400px;
-    height: 400px;
-}
 .image-stack-and-text .image-stack-container-left, .image-stack-and-text .image-stack-container-left {
     width: 410px;
     height: 410px;
