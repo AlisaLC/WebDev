@@ -346,3 +346,39 @@ body > .grid {
     top: 60%;
     left: 30px;
 }
+
+
+.news {
+    border-radius: 2%;
+    background-color: blue;
+    padding: 30px;
+    margin-bottom: -100px;
+    position: relative;
+    z-index: 2;
+}
+
+.news .title {
+    color: white;
+}
+
+.footer {
+    background-color: #3b3133;
+    position: relative;
+    height: 300px;
+    width: 100%;
+    z-index: 1;
+    color: wheat;
+    display: flex;
+    justify-content: center;
+    padding-top: 150px;
+}
+
+.footer p {
+    direction: ltr;
+    font-family: sans-serif;
+    text-align: center;
+}
+
+#section7 {
+    margin-bottom: 0;
+}
