@@ -364,6 +364,7 @@ body.dark-mode .navbar-brand {
 .contact-us .icon {
     width: 120px;
     height: 120px;
+    margin: 5px;
     display: block;
     direction: ltr !important;
     clip-path: circle(61px);
@@ -531,4 +532,24 @@ body.dark-mode .navbar-brand {
 
 .news label {
     color: white;
+}
+
+body.dark-mode #section2 .card, body.dark-mode #section6 .card {
+    background-color: rgb(223, 223, 223);
+}
+
+body.dark-mode .card-important .card-header {
+    background-color: rgb(97, 0, 0);
+}
+
+body.dark-mode .card-header {
+    background-color: rgb(0, 39, 97);
+}
+
+body.dark-mode #section4 h1, body.dark-mode #section4 p, body.dark-mode #section6 h1 {
+    color: white;
+}
+
+#sidebar, .navbar {
+    z-index: 3;
 }

@@ -12,6 +12,12 @@ $(document).ready(function () {
         $("body").toggleClass("dark-mode")
     })
 
+    $(".list-group-item-action").click(function () {
+        let myCollapse = document.getElementById('sidebar')
+        let bsCollapse = new bootstrap.Collapse(myCollapse)
+        bsCollapse.hide();
+    })
+
     let prevScroll = -100;
     $(document).scroll(function () {
         let currentScroll = $(this).scrollTop();
