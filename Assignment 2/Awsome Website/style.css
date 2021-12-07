@@ -59,6 +59,11 @@ body > .grid {
     height: 100%;
 }
 
+a {
+    text-decoration: none;
+    color: #c13500;
+}
+
 .navbar-toggler {
     background-color: rgb(3, 3, 3);
     border-color: rgb(3, 3, 3);
@@ -198,6 +203,10 @@ body > .grid {
     transition: 0.5s ease;
 }
 
+.overlay-container a {
+    color: #FFBA10;
+}
+
 .large-screen .overlay-container:hover .overlay-content {
     transform: scaleY(1);
 }
@@ -209,11 +218,6 @@ body > .grid {
 .overlay-inner {
     margin: 40% auto;
 }
-
-.overlay-content a {
-    text-decoration: none;
-}
-
 
 .mainSection {
     margin-bottom: 10vh;
