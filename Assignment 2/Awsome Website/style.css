@@ -382,3 +382,74 @@ body > .grid {
 #section7 {
     margin-bottom: 0;
 }
+
+
+.image-stack-and-text img {
+    border: solid white 8px;
+}
+
+.image-stack-and-text img {
+    width: 400px;
+    height: 400px;
+}
+.image-stack-and-text .image-stack-container-left, .image-stack-and-text .image-stack-container-left {
+    width: 410px;
+    height: 410px;
+    margin-left: 60px;
+    margin-right: 60px;
+}
+
+.image-stack-and-text .text {
+    font-size: 30px;
+    margin-top: 20%;
+}
+
+.image-stack-container-left img {
+    box-shadow: -16px -16px 5px 5px rgba(0,0,0,0.2);
+}
+.image-stack-container-right img {
+    box-shadow: 16px 16px 5px 5px rgba(0,0,0,0.2);
+}
+
+.image-stack-container-right {
+    direction: rtl;
+    position: relative;
+}
+.image-stack-container-left {
+    direction: ltr;
+    position: relative;
+}
+.image-stack-and-text .stack-picture:hover {
+    z-index: 1;
+}
+.image-stack-and-text .stack-picture:hover img {
+    border: solid saddlebrown 8px;
+}
+.image-stack-and-text .stack-picture {
+    position: absolute;
+}
+.image-stack-container-left .stack-picture {
+    left: 0;
+    top: 0;
+}
+.image-stack-container-left .stack-picture + .stack-picture {
+    left: 30px;
+    top: 30px;
+}
+.image-stack-container-left .stack-picture + .stack-picture + .stack-picture {
+    left: 60px;
+    top: 60px;
+}
+
+.image-stack-container-right .stack-picture {
+    top: 0;
+    right: 0;
+}
+.image-stack-container-right .stack-picture + .stack-picture {
+    top: -30px;
+    right: 30px;
+}
+.image-stack-container-right .stack-picture + .stack-picture + .stack-picture {
+    top: -60px;
+    right: 60px;
+}
