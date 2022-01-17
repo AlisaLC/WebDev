@@ -1,4 +1,4 @@
-HW1/nodejs/node_modules
-HW1/locust/__pycache__/
+node_modules/
+__pycache__/
 .vscode
 .idea
