@@ -8,19 +8,26 @@ import (
 	"net"
 	"sample.com/cache-server/adapter"
 	"sample.com/cache-server/protocol"
+	"sync"
 )
 
 
 type server struct {
 	protocol.UnimplementedCacheServer
+	lock sync.Mutex
 }
 
-func (server) Get(ctx context.Context, req *protocol.GetRequest) (*protocol.GetResponse, error) {
+func (s server) Get(ctx context.Context, req *protocol.GetRequest) (*protocol.GetResponse, error) {
+	s.lock.Lock()
+	defer s.lock.Unlock()
 	log.Printf("Get Request -> %v", req)
+
 	res, err := cache.get(adapter.KeyToCustom(req.Key))
 	return &protocol.GetResponse{Value: res}, err
 }
-func (server) Set(ctx context.Context, req *protocol.SetRequest) (*protocol.SetResponse, error) {
+func (s server) Set(ctx context.Context, req *protocol.SetRequest) (*protocol.SetResponse, error) {
+	s.lock.Lock()
+	defer s.lock.Unlock()
 	log.Printf("Set Request -> %v", req)
 	if !adapter.CheckValidKey(req.Key) {
 		return nil, errors.New("key is a string longer than 1024")
