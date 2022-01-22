@@ -1,5 +1,5 @@
 import { injectable } from 'inversify'
-import { Note, NoteRepository } from './../domain/note'
+import { Note } from './../domain/note'
 import { User } from './../domain/user'
 
 @injectable()

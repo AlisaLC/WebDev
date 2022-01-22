@@ -1,6 +1,7 @@
 import { ServiceClient } from "@grpc/grpc-js/build/src/make-client";
 import { inject, injectable } from "inversify";
 import { Repository } from "typeorm";
+import { NotFoundError } from "../../application/error/errors";
 import { Note, NoteRepository } from "../../domain/note";
 import { User } from "../../domain/user";
 import { CacheUtil } from "../util/cache-util";
@@ -15,7 +16,7 @@ export class NoteRepositoryImpl extends NoteRepository {
     async findNoteByID(id: number): Promise<Note> {
         const note = await this.dbRepository.createQueryBuilder('note').where('note.id = :id', { id }).leftJoinAndSelect('note.owner', 'user').getOne();
         if (note) return note;
-        throw new Error('note not found');
+        throw new NotFoundError('note not found');
     }
 
     async findNotesByUser(user: User): Promise<Note[]> {

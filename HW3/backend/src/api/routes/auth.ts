@@ -1,6 +1,6 @@
 import { FastifyInstance, FastifyPluginOptions, HookHandlerDoneFunction } from "fastify";
+import { UnauthorizedError } from "../../application/error/errors";
 import { UserApplicationService } from "../../application/user-application-service";
-import { ClaimType, Token } from "../../domain/token";
 
 export function authRoutesPlugin() {
     return async (app: FastifyInstance, options: FastifyPluginOptions, done: HookHandlerDoneFunction) => {
@@ -26,13 +26,13 @@ export function authRoutesPlugin() {
         }, async (request, reply) => {
             const service = request.container.get<UserApplicationService>(UserApplicationService);
             const token = await service.login(request.body.username, request.body.password);
-            reply.setCookie('auth', token); 
+            reply.setCookie('auth', token);
             reply.status(200).send(token);
         });
 
         app.get('/logout', (request, reply) => {
             if (!request.identity || !request.identity.isAuthenticated || !request.identity.user) {
-                throw new Error("identity invalid!");
+                throw new UnauthorizedError("identity invalid!");
             }
             reply.clearCookie('auth').status(200).send('logged out');
         });

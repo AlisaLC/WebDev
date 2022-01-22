@@ -1,6 +1,7 @@
 import { inject, injectable } from "inversify";
 import { ClaimType, Token } from "../../domain/token";
 import { User, UserRepository } from "../../domain/user";
+import { ConflictError, UnauthorizedError } from "../error/errors";
 import { UserApplicationService } from "../user-application-service";
 
 @injectable()
@@ -15,7 +16,7 @@ export class UserApplicationServiceImpl extends UserApplicationService {
         } catch (e) {
             usernameExists = false;
         };
-        if (usernameExists) throw new Error('repeated username');
+        if (usernameExists) throw new ConflictError('repeated username');
         let user = new User();
         user.username = username;
         user.setPassword(password);
@@ -35,10 +36,10 @@ export class UserApplicationServiceImpl extends UserApplicationService {
         if (user.verifyPassword(password)) {
             return Token.create([{ type: ClaimType.UserId, value: user.id.toString() }, { type: ClaimType.IsAdmin, value: user.isAdmin }]).toString();
         }
-        throw new Error('incorrect password');
+        throw new UnauthorizedError('incorrect password');
     }
 
-    async logout(user: User): Promise<string> {
-        throw new Error("Method not implemented.");
+    async logout(user: User): Promise<void> {
+        // TODO: if token is saved in cache, expire it
     }
 }
