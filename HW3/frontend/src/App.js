@@ -21,6 +21,7 @@ import {
 } from 'recoil';
 
 import {isLoggedInSelector, themeAtom, toggleTheme} from './global/state'
+import {ParticleComponent} from "./components/Particles";
 
 
 function authNode(node, isLoggedIn, shouldLoggedIn) {
@@ -33,12 +34,13 @@ function authNode(node, isLoggedIn, shouldLoggedIn) {
 export default function App() {
     const [theme, setTheme] = useRecoilState(themeAtom)
     const isLoggedIn = useRecoilValue(isLoggedInSelector)
-
+    const themeObj = theme === "light" ? lightTheme : darkTheme;
     return (
-        <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
+        <ThemeProvider theme={themeObj}>
              <CssBaseline/>
              <Router>
                  <Navbar theme={theme} toggleCallback={()=>toggleTheme({theme, setTheme})}/>
+                 <ParticleComponent theme={themeObj}/>
                  <Routes>
                      <Route exact path="/" element={<HomePage/>}/>
                      <Route path="/login" element={authNode(<LoginPage/>, isLoggedIn, false)}/>
