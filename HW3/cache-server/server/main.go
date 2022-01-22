@@ -38,7 +38,12 @@ func (s server) Set(ctx context.Context, req *protocol.SetRequest) (*protocol.Se
 	cache.set(adapter.KeyToCustom(req.Key), req.Value)
 	return &protocol.SetResponse{}, nil
 }
-
+func (s server) Clear(ctx context.Context, req *protocol.ClearRequest) (*protocol.ClearResponse, error) {
+	s.lock.Lock()
+	defer s.lock.Unlock()
+	cache.clear()
+	return &protocol.ClearResponse{}, nil
+}
 
 func init() {
 	port = adapter.GoDotEnvVariable("PORT")
