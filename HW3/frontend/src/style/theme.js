@@ -17,13 +17,13 @@ export const lightTheme = createTheme({
             contrastText: '#eae9e9',
         },
         background: {
-            paper: '#eaaa93',
+            paper: '#f8debf',
             paperSec: '#e88c70',
             default: '#e5dc97',
         },
         text: {
             primary: 'rgba(20,20,20,0.87)',
-            secondary: '#b17474',
+            secondary: '#4d3f3f',
         },
     },
     typography: {
