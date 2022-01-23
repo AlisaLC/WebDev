@@ -9,7 +9,7 @@ export const themeAtom = atom({
 
 export const notesAtom = atom({
     key: "notes",
-    default: []
+    default: null // when we have not gotten it from database it should be null
 })
 
 export const usernameAtom = atom({
@@ -25,10 +25,6 @@ export const isLoggedInSelector = selector({
         return !!username
     },
 })
-
-export function logout({username, setUsername}) {
-    setUsername(null)
-}
 
 export function toggleTheme({theme, setTheme}) {
     setTheme(theme === "light" ? "dark" : "light")

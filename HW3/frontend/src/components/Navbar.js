@@ -1,16 +1,12 @@
 import {AppBar, Box, Stack, Toolbar, Typography, Button} from "@mui/material";
 import {ThemeSwitch} from "./ThemeSwitch";
-import {usernameAtom} from "../global/state";
+import {usernameAtom} from "../state/State";
 import {useRecoilState} from "recoil";
 import {Link as RouterLink} from 'react-router-dom'
-import {logout} from "../api/api";
+import {logout} from "../state/ApiAdapter";
 
 export default function Navbar({theme, toggleCallback}) {
     const [username, setUsername] = useRecoilState(usernameAtom)
-    const onLogout = ()=>{
-        setUsername(null)
-        logout()
-    }
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">
@@ -20,7 +16,7 @@ export default function Navbar({theme, toggleCallback}) {
                             <Typography variant="h5" sx={{p: 2}}>
                                 Welcome {username}!
                             </Typography>
-                            <Button variant="contained" onClick={onLogout}>Logout</Button>
+                            <Button variant="contained" onClick={()=>logout({username, setUsername})}>Logout</Button>
                         </Toolbar>
                         :
                         <Toolbar>

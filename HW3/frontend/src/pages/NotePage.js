@@ -1,17 +1,19 @@
-import {Box, Button, CircularProgress, Grid, Typography} from "@mui/material";
+import {Box, Button, CircularProgress, Grid, Slide, Typography} from "@mui/material";
 import {Add} from "@mui/icons-material";
-import {useEffect, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import NotePreview from '../components/NotePreview'
 import NoteEditor from "../components/NoteEditor";
-import {createNote, getAllNotes, updateNote} from "../api/api";
+import {createNote, getAllNotes, updateNote} from "../state/ApiAdapter";
+import {notesAtom} from "../state/State";
+import {useRecoilState} from "recoil";
 
 function renderPreviewList(notes, setActiveNote) {
     if (notes && notes.length > 0) {
         return <Grid container spacing={2} sx={{display: 'flex', justifyContent: 'space-evenly'}}>
             {
                 notes.map(x=>
-                    <Grid item>
-                        <NotePreview title={x.title} text={x.text} key={x.id} onOpen={()=>setActiveNote(x)}/>
+                    <Grid item key={x.id}>
+                        <NotePreview title={x.title} text={x.text} onOpen={()=>setActiveNote(x)}/>
                     </Grid>
                 )
             }
@@ -28,23 +30,30 @@ function renderPreviewList(notes, setActiveNote) {
 }
 
 export default function NotePage() {
-    const [notes, setNotes] = useState(null)
+    const [notes, setNotes] = useRecoilState(notesAtom)
     const [activeNote, setActiveNote] = useState(null)
 
     useEffect(()=>{
-        getAllNotes().then(res=>setNotes(res))
+        getAllNotes({notes, setNotes})
     }, [])
 
     const addNewNote = () => {
-        createNote({title: 'Untitled', text: ""}).then(res=>{
-            setNotes([...notes, res])
-        })
+        createNote({title: 'Untitled', text: ""}, {notes, setNotes})
     }
-    const onSaveActiveNote = (callback) => {
-        updateNote(activeNote).then(callback)
+
+    const onSaveActiveNote = (note, callback) => {
+        if(note !== null)
+            updateNote(note, {note: activeNote, setNote: setActiveNote, notes, setNotes})
+                .then(callback)
+        else if(callback)
+            callback()
     }
 
     const onCloseActiveNote = () => {
+        setActiveNote(null)
+    }
+
+    if(activeNote !== null && !notes.find(e => e.id === activeNote.id)) {
         setActiveNote(null)
     }
 
@@ -61,7 +70,7 @@ export default function NotePage() {
                 </Button>
             </Box>
             {renderPreviewList(notes, setActiveNote)}
-            {!!activeNote ? <NoteEditor open={true} note={activeNote} onSave={onSaveActiveNote} onClose={onCloseActiveNote}/> : null}
+            <NoteEditor open={!!activeNote} note={activeNote} setNote={setActiveNote} onSave={onSaveActiveNote} onClose={onCloseActiveNote}/>
         </>
     )
 }

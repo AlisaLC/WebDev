@@ -17,7 +17,7 @@ export async function getAllNotes() {
     await sleep(500)
     const res = []
     for(let key in notes) {
-        res.push({id: key, title: notes[key].title, text: notes[key].text})
+        res.push({id: +key, title: notes[key].title, text: notes[key].text})
     }
     return res
 }

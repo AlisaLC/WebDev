@@ -20,7 +20,7 @@ import {
     useRecoilState
 } from 'recoil';
 
-import {isLoggedInSelector, themeAtom, toggleTheme} from './global/state'
+import {isLoggedInSelector, themeAtom, toggleTheme} from './state/State'
 import {ParticleComponent} from "./components/Particles";
 
 

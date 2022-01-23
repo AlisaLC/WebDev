@@ -1,7 +1,5 @@
 import {createTheme} from "@mui/material";
-import {orange, purple, green} from "@mui/material/colors";
-
-// todo. fix colors
+import {green} from "@mui/material/colors";
 
 export const lightTheme = createTheme({
     palette: {

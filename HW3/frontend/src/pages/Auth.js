@@ -7,11 +7,11 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import {login, register} from "../api/api"
+import {login, register} from "../state/ApiAdapter"
 import { useNavigate, Link as RouterLink } from "react-router-dom";
 import {Alert, IconButton, Link, Snackbar} from "@mui/material";
 import CloseIcon from '@mui/icons-material/Close';
-import {usernameAtom} from "../global/state";
+import {usernameAtom} from "../state/State";
 import {useRecoilState} from "recoil";
 
 function renderLoginRegisterForm(isLogin, {errorMessage, handleSubmit, onCloseError}) {
@@ -105,11 +105,8 @@ export function LoginPage() {
     const handleSubmit = (event => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
-        login({username: data.get("username"), password: data.get("password")})
-            .then(()=> {
-                setUsername(data.get("username"))
-                navigate("/notes")
-            })
+        login({username: data.get("username"), password: data.get("password")}, {setUsername})
+            .then(()=>navigate("/notes"))
             .catch(e=>setErrorMessage(e))
     });
     const onCloseError = ()=>setErrorMessage(null)
@@ -124,11 +121,8 @@ export function RegisterPage() {
     const handleSubmit = (event => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
-        register({username: data.get("username"), password: data.get("password")})
-            .then(res=> {
-                setUsername(data.get("username"))
-                navigate("/notes")
-            })
+        register({username: data.get("username"), password: data.get("password")}, {setUsername})
+            .then(()=>navigate("/notes"))
             .catch(e=>setErrorMessage(e))
     });
     const onCloseError = ()=>setErrorMessage(null)
