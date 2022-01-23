@@ -40,9 +40,9 @@ export default function App() {
              <CssBaseline/>
              <Router>
                  <Navbar theme={theme} toggleCallback={()=>toggleTheme({theme, setTheme})}/>
-                 <ParticleComponent theme={themeObj}/>
+                 <ParticleComponent theme={themeObj} />
                  <Routes>
-                     <Route exact path="/" element={<HomePage/>}/>
+                     <Route path="/" element={<HomePage />}/>
                      <Route path="/login" element={authNode(<LoginPage/>, isLoggedIn, false)}/>
                      <Route path="/register" element={authNode(<RegisterPage/>, isLoggedIn, false)}/>
                      <Route path="/notes" element={authNode(<NotePage/>, isLoggedIn, true)}/>
