@@ -1,6 +1,7 @@
 import { ServiceClient } from "@grpc/grpc-js/build/src/make-client";
 import { inject, injectable } from "inversify";
 import { Repository } from "typeorm";
+import { NotFoundError } from "../../application/error/errors";
 import { User, UserRepository } from "../../domain/user";
 import { CacheUtil } from "../util/cache-util";
 
@@ -14,7 +15,7 @@ export class UserRepositoryImpl extends UserRepository {
     async findUserByID(id: number): Promise<User> {
         const user = await this.dbRepository.findOne(id);
         if (user) return user;
-        throw new Error('user not found');
+        throw new NotFoundError('user not found');
     }
     async findUserByUsername(username: string): Promise<User> {
         let userId: number = -1;
@@ -23,12 +24,12 @@ export class UserRepositoryImpl extends UserRepository {
         } catch (e) { }
         if (userId === -1) {
             const user = await this.dbRepository.findOne({ username });
-            if (!user) throw new Error('user not found');
+            if (!user) throw new NotFoundError('user not found');
             await CacheUtil.set(this.stub, username, user.id);
             return user;
         } else {
             const user = await this.dbRepository.findOne(userId);
-            if (!user) throw new Error('user not found');
+            if (!user) throw new NotFoundError('user not found');
             return user;
         }
     }

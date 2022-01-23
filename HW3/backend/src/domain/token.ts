@@ -1,5 +1,6 @@
 import jwt from 'jsonwebtoken';
 import { randomUUID } from 'crypto';
+import { UnauthorizedError } from '../application/error/errors';
 
 export class Token {
     private constructor(public readonly content: string, public readonly id: string, public readonly expiration: Date) { }
@@ -28,7 +29,7 @@ export class Token {
 
     static from(content: string) {
         const payload = jwt.decode(content, { json: true });
-        if (payload == null || payload.exp == null) throw new Error('invalid token');
+        if (payload == null || payload.exp == null) throw new UnauthorizedError('invalid token');
         const date = new Date(payload.exp);
         return new Token(content, payload.jti!, date);
     }

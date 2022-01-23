@@ -1,4 +1,5 @@
 import { ServiceClient } from "@grpc/grpc-js/build/src/make-client";
+import { InternalError } from "../../application/error/errors";
 
 export class CacheUtil {
     static async set(stub: ServiceClient, key: string | number, value: string | number): Promise<string | number> {
@@ -34,12 +35,12 @@ export class CacheUtil {
         return new Promise(async (resolve, reject) => {
             stub.get({ key: { [keyType]: key } }, function (err: Error, res: { value: { string_t?: string, int_t?: number, type: 'string_t' | 'int_t' } }) {
                 if (err) {
-                    reject(new Error('undefined value'));
+                    reject(new InternalError('undefined value'));
                     return;
                 }
                 const type = res.value.type;
                 const value = res.value[type];
-                if (!value) throw new Error('undefined value');
+                if (!value) throw new InternalError('undefined value');
                 resolve(value);
             })
         })
