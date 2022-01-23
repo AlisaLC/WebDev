@@ -1,7 +1,7 @@
 import { inject, injectable } from "inversify";
 import { ClaimType, Token } from "../../domain/token";
 import { User, UserRepository } from "../../domain/user";
-import { ConflictError, UnauthorizedError } from "../error/errors";
+import { BadRequestError, ConflictError, UnauthorizedError } from "../error/errors";
 import { UserApplicationService } from "../user-application-service";
 
 @injectable()
@@ -9,7 +9,9 @@ export class UserApplicationServiceImpl extends UserApplicationService {
     @inject(UserRepository)
     repo: UserRepository;
 
-    async signup(username: string, password: string, name: string, isAdmin: boolean): Promise<string> {
+    async signup(username: string, password: string, isAdmin: boolean): Promise<string> {
+        if (isAdmin === undefined || isAdmin === null) isAdmin = false;
+        if (!username || !password) throw new BadRequestError('username or password cannot be empty')
         let usernameExists = true;
         try {
             const oldUser = await this.repo.findUserByUsername(username);
@@ -21,7 +23,6 @@ export class UserApplicationServiceImpl extends UserApplicationService {
         user.username = username;
         user.setPassword(password);
         user.isAdmin = isAdmin;
-        user.name = name;
         user = await this.repo.save(user);
         return Token.create([{ type: ClaimType.UserId, value: user.id.toString() }, { type: ClaimType.IsAdmin, value: user.isAdmin }]).toString();
     }

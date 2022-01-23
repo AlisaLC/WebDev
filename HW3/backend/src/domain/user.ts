@@ -14,9 +14,6 @@ export class User {
     @Column({ length: 32 })
     password: string;
 
-    @Column({ length: 100 })
-    name: string;
-
     @Column()
     isAdmin: boolean;
 

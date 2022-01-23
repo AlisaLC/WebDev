@@ -4,15 +4,15 @@ import { UserApplicationService } from "../../application/user-application-servi
 
 export function authRoutesPlugin() {
     return async (app: FastifyInstance, options: FastifyPluginOptions, done: HookHandlerDoneFunction) => {
-        app.post<{ Body: { username: string, password: string, name: string, isAdmin: boolean } }>('/signup', {
+        app.post<{ Body: { username: string, password: string, isAdmin: boolean } }>('/signup', {
             schema: {
                 body: {
-                    username: { type: 'string' }, password: { type: 'string' }, name: { type: 'string' }, isAdmin: { type: 'boolean' }
+                    username: { type: 'string' }, password: { type: 'string' }, isAdmin: { type: 'boolean' }
                 }
             }
         }, async (request, reply) => {
             const service = request.container.get<UserApplicationService>(UserApplicationService);
-            const token = await service.signup(request.body.username, request.body.password, request.body.name, request.body.isAdmin);
+            const token = await service.signup(request.body.username, request.body.password, request.body.isAdmin);
             reply.setCookie('auth', token);
             reply.status(200).send(token);
         });

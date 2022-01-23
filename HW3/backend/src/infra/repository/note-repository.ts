@@ -40,7 +40,7 @@ export class NoteRepositoryImpl extends NoteRepository {
     }
 
     async getAll(): Promise<Note[]> {
-        const notes = await this.dbRepository.find();
+        const notes = await this.dbRepository.createQueryBuilder('note').leftJoinAndSelect('note.owner', 'user').getMany();
         return notes;
     }
 

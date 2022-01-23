@@ -18,12 +18,12 @@ export function noteRoutesPlugin() {
             reply.status(200).send(notes);
         });
 
-        app.post<{ Body: string }>('/new', async (request, reply) => {
+        app.post<{ Body: { title: string, text: string } }>('/new', async (request, reply) => {
             if (!request.identity || !request.identity.isAuthenticated || !request.identity.user) {
                 throw new UnauthorizedError("identity invalid!");
             }
             const service = request.container.get<NoteApplicationService>(NoteApplicationService);
-            const note = await service.create(request.body, request.identity.user);
+            const note = await service.create(request.body.title, request.body.text, request.identity.user);
             reply.status(201).send(note);
         });
 
@@ -39,7 +39,7 @@ export function noteRoutesPlugin() {
             reply.status(200).send(note);
         });
 
-        app.put<{ Params: { id: number }, Body: string }>('/:id', { schema: { params: { id: { type: 'number' } } } }, async (request, reply) => {
+        app.put<{ Params: { id: number }, Body: { title: string, text: string } }>('/:id', { schema: { params: { id: { type: 'number' } } } }, async (request, reply) => {
             if (!request.identity || !request.identity.isAuthenticated || !request.identity.user) {
                 throw new UnauthorizedError("identity invalid!");
             }
@@ -48,7 +48,7 @@ export function noteRoutesPlugin() {
             if (note.owner.id !== request.identity.user.id && !request.identity.user.isAdmin) {
                 throw new AccessForbiddenError('user cannot access note')
             }
-            note = await service.update(note, request.body);
+            note = await service.update(note, request.body.title, request.body.text);
             reply.status(200).send(note);
         });
 

@@ -14,6 +14,9 @@ export class Note {
     @Column('text')
     text: string;
 
+    @Column('text')
+    title: string;
+
     @Column()
     createdAt: Date;
 
