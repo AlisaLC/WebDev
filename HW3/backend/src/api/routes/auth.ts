@@ -14,6 +14,7 @@ export function authRoutesPlugin() {
             const service = request.container.get<UserApplicationService>(UserApplicationService);
             const token = await service.signup(request.body.username, request.body.password, request.body.isAdmin);
             reply.setCookie('auth', token);
+            reply.header('auth', token);
             reply.status(200).send(token);
         });
 
@@ -27,6 +28,7 @@ export function authRoutesPlugin() {
             const service = request.container.get<UserApplicationService>(UserApplicationService);
             const token = await service.login(request.body.username, request.body.password);
             reply.setCookie('auth', token);
+            reply.header('auth', token);
             reply.status(200).send(token);
         });
 
