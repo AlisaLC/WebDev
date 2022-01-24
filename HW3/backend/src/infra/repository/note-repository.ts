@@ -64,19 +64,20 @@ export class NoteRepositoryImpl extends NoteRepository {
         try {
             idConcat = await CacheUtil.get(this.stub, note.owner.id) as string;
         } catch (e) { }
-        if (idConcat === '-1') return;
-        const noteIds = new Set(idConcat.split('|').map(e => Number(e)));
-        noteIds.delete(note.id);
-        idConcat = '';
-        for (let noteId of noteIds) {
-            idConcat += noteId + '|';
+        if (idConcat !== '-1') {
+            const noteIds = new Set(idConcat.split('|').map(e => Number(e)));
+            noteIds.delete(note.id);
+            idConcat = '';
+            for (let noteId of noteIds) {
+                idConcat += noteId + '|';
+            }
+            if (idConcat.length > 0) {
+                idConcat = idConcat.slice(0, -1);
+            } else {
+                idConcat = '-1';
+            }
+            await CacheUtil.set(this.stub, note.owner.id, idConcat);
         }
-        if (idConcat.length > 0) {
-            idConcat = idConcat.slice(0, -1);
-        } else {
-            idConcat = '-1';
-        }
-        await CacheUtil.set(this.stub, note.owner.id, idConcat)
         await this.dbRepository.delete(note);
     }
 }
