@@ -2,8 +2,6 @@ syntax = "proto2";
 
 option go_package = "sample.com/cache-server;protocol";
 
-import "google/protobuf/any.proto";
-
 message Key {
   oneof type {
     string string_t = 1;
@@ -33,7 +31,13 @@ message GetResponse {
   required Value value = 2;
 }
 
+message ClearResponse {
+}
+message ClearRequest {
+}
+
 service Cache {
   rpc Get(GetRequest) returns (GetResponse) {}
   rpc Set(SetRequest) returns (SetResponse) {}
+  rpc Clear(ClearRequest) returns (ClearResponse) {}
 }
