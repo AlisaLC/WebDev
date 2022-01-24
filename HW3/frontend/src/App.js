@@ -36,7 +36,6 @@ export default function App() {
     const [theme, setTheme] = useRecoilState(themeAtom)
     const isLoggedIn = useRecoilValue(isLoggedInSelector)
     const themeObj = theme === "light" ? lightTheme : darkTheme;
-    console.log("RE RENDER APP")
     return (
         <ThemeProvider theme={themeObj}>
              <CssBaseline/>

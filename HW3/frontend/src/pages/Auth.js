@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
+import Checkbox from '@mui/material/Checkbox';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
@@ -9,7 +10,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import {login, register} from "../state/ApiAdapter"
 import { useNavigate, Link as RouterLink } from "react-router-dom";
-import {Alert, IconButton, Link, Snackbar} from "@mui/material";
+import {Alert, FormControlLabel, IconButton, Link, Snackbar} from "@mui/material";
 import CloseIcon from '@mui/icons-material/Close';
 import {usernameAtom} from "../state/State";
 import {useRecoilState} from "recoil";
@@ -69,6 +70,16 @@ function renderLoginRegisterForm(isLogin, {errorMessage, handleSubmit, onCloseEr
                     id="password"
                     autoComplete="current-password"
                 />
+                {isLogin
+                    ?
+                    null
+                    :
+                    <FormControlLabel
+                        label="is Admin"
+                        aria-label='is Admin'
+                        control={<Checkbox  name="isAdmin"/>}
+                    />
+                }
                 <Button
                     type="submit"
                     fullWidth
@@ -121,7 +132,7 @@ export function RegisterPage() {
     const handleSubmit = (event => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
-        register({username: data.get("username"), password: data.get("password")}, {setUsername})
+        register({username: data.get("username"), password: data.get("password"), isAdmin: !!data.get("isAdmin")}, {setUsername})
             .then(()=>navigate("/notes"))
             .catch(e=>setErrorMessage(e))
     });

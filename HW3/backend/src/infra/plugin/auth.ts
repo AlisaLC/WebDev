@@ -17,7 +17,6 @@ export function authPlugin(server: FastifyInstance) {
             request.identity.isAuthenticated = true;
             request.identity.user = user;
             reply.header('auth-username', user.username);
-            console.log(user.username + ' added  to header');
         });
         done();
     }

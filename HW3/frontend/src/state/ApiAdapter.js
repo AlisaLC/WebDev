@@ -33,8 +33,8 @@ export function login({username, password}, {oldUsername, setUsername}) {
     return API.login({username, password})
         .then(res=>updateUsernameIfChanged({oldUsername, setUsername}))
 }
-export function register({username, password}, {oldUsername, setUsername}) {
-    return API.register({username, password})
+export function register({username, password, isAdmin}, {oldUsername, setUsername}) {
+    return API.register({username, password, isAdmin})
         .then(res=>updateUsernameIfChanged({oldUsername, setUsername}))
 }
 export function logout({username, setUsername}) {
@@ -42,12 +42,9 @@ export function logout({username, setUsername}) {
     updateUsernameIfChanged({username, setUsername})
 }
 export function updateUsernameIfChanged({username, setUsername}) {
-    // todo is this connected to every where?
     const cUsername = Cookies.get('username') || null
     const rUsername = username || null
-    console.log(cUsername, " ***** ", rUsername, "===== ", username)
     if(cUsername !== rUsername) {
-        console.log("WE SET USERNAME!! ")
         setUsername(cUsername)
     }
 }

@@ -35,13 +35,17 @@ export default function NotePage() {
     const [activeNote, setActiveNote] = useState(null)
     const [errorObj, setErrorObj] = useState({hasError: false, lastError: null})
 
-    useEffect(()=>{
+    useEffect(()=> {
         getAllNotes({notes, setNotes})
-            .catch(e=>setErrorObj({hasError: true, lastError: e}))
+            .catch(e => {
+                setErrorObj({hasError: true, lastError: e})
+                if (notes === null)
+                    setNotes([])
+            })
     }, [])
 
     const addNewNote = () => {
-        createNote({title: 'Untitled', text: ""}, {notes, setNotes})
+        createNote({title: 'Untitled', text: " "}, {notes, setNotes})
             .catch(e=>setErrorObj({hasError: true, lastError: e}))
     }
 
