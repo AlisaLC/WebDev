@@ -1,10 +1,11 @@
 import { FastifyInstance, FastifyPluginOptions, HookHandlerDoneFunction } from "fastify";
+import { REPL_MODE_SLOPPY } from "repl";
 import { UserApplicationService } from "../../application/user-application-service";
 import { ClaimType, Token } from "../../domain/token";
 
 export function authPlugin(server: FastifyInstance) {
     return async (app: FastifyInstance, _options: FastifyPluginOptions, done: HookHandlerDoneFunction) => {
-        server.addHook('onRequest', async (request) => {
+        server.addHook('onRequest', async (request, reply) => {
             request.identity = { isAuthenticated: false };
             const rawToken = request.cookies.auth;
             if (!rawToken) return;
@@ -16,6 +17,7 @@ export function authPlugin(server: FastifyInstance) {
             const user = await service.get(data[ClaimType.UserId]);
             request.identity.isAuthenticated = true;
             request.identity.user = user;
+            reply.header('auth-username', user.username);
         });
         done();
     }
