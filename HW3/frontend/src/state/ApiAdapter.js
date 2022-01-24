@@ -1,4 +1,5 @@
 import * as API from '../api/api';
+import Cookies from 'js-cookie'
 
 export function getAllNotes({notes, setNotes}) {
     return API.getAllNotes()
@@ -28,15 +29,25 @@ export function deleteNote({id}, {note, setNote, notes, setNotes}) {
         })
 }
 
-export function login({username, password}, {setUsername}) {
+export function login({username, password}, {oldUsername, setUsername}) {
     return API.login({username, password})
-        .then(res=>setUsername(username))
+        .then(res=>updateUsernameIfChanged({oldUsername, setUsername}))
 }
-export function register({username, password}, {setUsername}) {
+export function register({username, password}, {oldUsername, setUsername}) {
     return API.register({username, password})
-        .then(res=>setUsername(username))
+        .then(res=>updateUsernameIfChanged({oldUsername, setUsername}))
 }
 export function logout({username, setUsername}) {
     API.logout()
-    setUsername(null)
+    updateUsernameIfChanged({username, setUsername})
+}
+export function updateUsernameIfChanged({username, setUsername}) {
+    // todo is this connected to every where?
+    const cUsername = Cookies.get('username') || null
+    const rUsername = username || null
+    console.log(cUsername, " ***** ", rUsername, "===== ", username)
+    if(cUsername !== rUsername) {
+        console.log("WE SET USERNAME!! ")
+        setUsername(cUsername)
+    }
 }

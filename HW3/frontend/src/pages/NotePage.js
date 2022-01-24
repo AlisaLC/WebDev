@@ -6,6 +6,7 @@ import NoteEditor from "../components/NoteEditor";
 import {createNote, getAllNotes, updateNote} from "../state/ApiAdapter";
 import {notesAtom} from "../state/State";
 import {useRecoilState} from "recoil";
+import ErrorModal from "../components/ErrorModal";
 
 function renderPreviewList(notes, setActiveNote) {
     if (notes && notes.length > 0) {
@@ -32,19 +33,23 @@ function renderPreviewList(notes, setActiveNote) {
 export default function NotePage() {
     const [notes, setNotes] = useRecoilState(notesAtom)
     const [activeNote, setActiveNote] = useState(null)
+    const [errorObj, setErrorObj] = useState({hasError: false, lastError: null})
 
     useEffect(()=>{
         getAllNotes({notes, setNotes})
+            .catch(e=>setErrorObj({hasError: true, lastError: e}))
     }, [])
 
     const addNewNote = () => {
         createNote({title: 'Untitled', text: ""}, {notes, setNotes})
+            .catch(e=>setErrorObj({hasError: true, lastError: e}))
     }
 
     const onSaveActiveNote = (note, callback) => {
         if(note !== null)
             updateNote(note, {note: activeNote, setNote: setActiveNote, notes, setNotes})
                 .then(callback)
+                .catch(e=>setErrorObj({hasError: true, lastError: e}))
         else if(callback)
             callback()
     }
@@ -71,6 +76,11 @@ export default function NotePage() {
             </Box>
             {renderPreviewList(notes, setActiveNote)}
             <NoteEditor open={!!activeNote} note={activeNote} setNote={setActiveNote} onSave={onSaveActiveNote} onClose={onCloseActiveNote}/>
+            <ErrorModal
+                hasError={errorObj.hasError}
+                lastError={errorObj.lastError}
+                clearErrorObj={()=>setErrorObj({hasError: false, lastError: null})}
+            />
         </>
     )
 }

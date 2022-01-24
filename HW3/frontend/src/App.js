@@ -22,31 +22,35 @@ import {
 
 import {isLoggedInSelector, themeAtom, toggleTheme} from './state/State'
 import {ParticleComponent} from "./components/Particles";
+import {ErrorBoundary} from "./components/ErrorBoundary";
 
 
 function authNode(node, isLoggedIn, shouldLoggedIn) {
     if(shouldLoggedIn)
         return isLoggedIn ? node : <Navigate to="/login" />
     else
-        return isLoggedIn ? <Navigate to="/" /> : node
+        return isLoggedIn ? <Navigate to="/notes" /> : node
 }
 
 export default function App() {
     const [theme, setTheme] = useRecoilState(themeAtom)
     const isLoggedIn = useRecoilValue(isLoggedInSelector)
     const themeObj = theme === "light" ? lightTheme : darkTheme;
+    console.log("RE RENDER APP")
     return (
         <ThemeProvider theme={themeObj}>
              <CssBaseline/>
              <Router>
                  <Navbar theme={theme} toggleCallback={()=>toggleTheme({theme, setTheme})}/>
                  <ParticleComponent theme={themeObj} />
-                 <Routes>
-                     <Route path="/" element={<HomePage />}/>
-                     <Route path="/login" element={authNode(<LoginPage/>, isLoggedIn, false)}/>
-                     <Route path="/register" element={authNode(<RegisterPage/>, isLoggedIn, false)}/>
-                     <Route path="/notes" element={authNode(<NotePage/>, isLoggedIn, true)}/>
-                 </Routes>
+                 <ErrorBoundary>
+                     <Routes>
+                         <Route path="/" element={<HomePage />}/>
+                         <Route path="/login" element={authNode(<LoginPage/>, isLoggedIn, false)}/>
+                         <Route path="/register" element={authNode(<RegisterPage/>, isLoggedIn, false)}/>
+                         <Route path="/notes" element={authNode(<NotePage/>, isLoggedIn, true)}/>
+                     </Routes>
+                 </ErrorBoundary>
              </Router>
         </ThemeProvider>
       );

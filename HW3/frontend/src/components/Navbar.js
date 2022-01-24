@@ -3,10 +3,15 @@ import {ThemeSwitch} from "./ThemeSwitch";
 import {usernameAtom} from "../state/State";
 import {useRecoilState} from "recoil";
 import {Link as RouterLink} from 'react-router-dom'
-import {logout} from "../state/ApiAdapter";
+import {logout, updateUsernameIfChanged} from "../state/ApiAdapter";
+
+import Cookies from 'js-cookie';
+import {login} from '../api/api';
+
 
 export default function Navbar({theme, toggleCallback}) {
     const [username, setUsername] = useRecoilState(usernameAtom)
+    updateUsernameIfChanged({username, setUsername})
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">
@@ -24,6 +29,16 @@ export default function Navbar({theme, toggleCallback}) {
                             <Button variant="contained" component={RouterLink} sx={{p: 2, m:1}} to="/register">Register</Button>
                         </Toolbar>
                     }
+
+
+                    {/* todo remove this after debug*/}
+                    <Toolbar>
+                        <Button variant="contained" sx={{p: 2, m:1}} onClick={()=> {
+                            login({username: "Shayan", password: "Pardis"}).then(console.log)
+                        }}>SHIT FOR DEBUG</Button>
+                    </Toolbar>
+
+
                     <Toolbar>
                         <ThemeSwitch
                             value="check"

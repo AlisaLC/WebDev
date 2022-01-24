@@ -13,6 +13,7 @@ import YesNoModal from "./YesNoModal";
 import {useRecoilState} from "recoil";
 import {notesAtom} from "../state/State";
 import {deleteNote as deleteNoteAdapter} from "../state/ApiAdapter"
+import ErrorModal from "./ErrorModal";
 
 
 export default function NoteEditor({onSave:outerSave, onClose, note, setNote}) {
@@ -21,6 +22,7 @@ export default function NoteEditor({onSave:outerSave, onClose, note, setNote}) {
     const [notes, setNotes] = useRecoilState(notesAtom)
     const [cachedNote, setCachedNote] = useState(null)
     const [isLoading, setIsLoading] = useState(false)
+    const [errorObj, setErrorObj] = useState({hasError: false, lastError: null})
 
     if(!note) {
         if(askForDelete)
@@ -64,6 +66,7 @@ export default function NoteEditor({onSave:outerSave, onClose, note, setNote}) {
     const deleteNote = ()=> {
         deleteNoteAdapter({id: note.id}, {note, setNote, notes, setNotes})
             .then(onClose)
+            .catch(e=>setErrorObj({hasError: true, lastError: e}))
     }
     return (
         <Dialog
@@ -115,6 +118,11 @@ export default function NoteEditor({onSave:outerSave, onClose, note, setNote}) {
                 onNo={onClose}
                 onClose={closeAskForSaveModal}
                 message={"Do you want to save before closing?"}
+            />
+            <ErrorModal
+                hasError={errorObj.hasError}
+                lastError={errorObj.lastError}
+                clearErrorObj={()=>setErrorObj({hasError: false, lastError: null})}
             />
         </Dialog>
     );

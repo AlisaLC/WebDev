@@ -15,7 +15,6 @@ export const notesAtom = atom({
 export const usernameAtom = atom({
     key: "username",
     default: null
-    // default: "Shayan" // todo make this null
 })
 
 export const isLoggedInSelector = selector({
