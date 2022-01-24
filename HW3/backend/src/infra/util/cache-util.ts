@@ -40,7 +40,10 @@ export class CacheUtil {
                 }
                 const type = res.value.type;
                 const value = res.value[type];
-                if (!value) throw new InternalError('undefined value');
+                if (!value) {
+                    reject(new InternalError('undefined value'));
+                    return
+                }
                 resolve(value);
             })
         })

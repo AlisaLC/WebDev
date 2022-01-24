@@ -33,7 +33,7 @@ function start(connection: Connection) {
     server.register(routesPlugin());
     server.setErrorHandler(errorHandler);
     const port = process.env.BACKEND_PORT || 8000;
-    server.listen(port);
+    server.listen(port, '0.0.0.0');
 }
 
 function bindContainer(connection: Connection, stub: ServiceClient, server: FastifyInstance) {

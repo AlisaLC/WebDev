@@ -9,7 +9,7 @@ export class Token {
         const utcNow = Date.now();
         const expirationSeconds = 120 * 60;
         const expiration = new Date(utcNow + expirationSeconds * 1000);
-        const id = randomUUID();
+        const id = "" + Math.floor(Math.random() * 1931938193); // randomUUID(); // todo fix this
 
         const payload = Object.fromEntries(claims.map((claim) => [claim.type, claim.value]));
 
